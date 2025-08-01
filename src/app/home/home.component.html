@@ -1,0 +1,235 @@
+ <!-- Slider -->
+ <section class="header slider-fade">
+    <div class="">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        <div class="item bg-img"  data-overlay-dark="5" style="background-image: url('https://goexotic.co/assets/img/slider/11.jpg');" >
+        <!-- <div class="item bg-img"   > -->
+            <div class="caption hero-search">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 mb-30">
+                            <div class="">
+                                <h1>WHERE DREAMS <span>ACCELERATE.</span></h1>
+                                <div *ngIf="homesection3?.content; else loading">
+                                    <div [innerHTML]="homesection3.content"></div>
+                                  </div>
+                                  
+                                  <ng-template #loading>
+                                    <div class="skeleton-loader" style="height: 200px;"></div>
+                                  </ng-template>
+                                <div class="mob-call-info  d-flex justify-content-start d-md-none">
+                                    <div class="wrap">
+                                        <div class="text">
+                                            <h5>Buy A Car<a href="tel:@if(settings[5]){ {{settings[5]?.value}} }">@if(settings[5]){ {{settings[5]?.value}} }</a></h5>
+                                        </div>
+                                        <div class="text">
+                                            <h5>Sell A Car<a href="tel:@if(settings[6]){ {{settings[6]?.value}} } ">@if(settings[6]){ {{settings[6]?.value}} }</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <form class="search-form" method="GET">
+                                    <input class="form-control" name="brandID" id="brandID" [(ngModel)]="searchObj.brandID" placeholder="Search Your Dream Car" (keydown.enter)="sercahcar()" >
+                                    <button class="btn rounded-theme-btn " type="button" (click)="sercahcar()">
+                                        <img src="assets/img/right-arrow.svg" alt="Search">
+                                    </button>
+                                </form>
+                                <div class="browse-btn-box d-flex align-items-center">
+                                    <a class="btn theme-gradient-btn btn-lg d-flex align-items-center" href="/pre-owned-used-luxury-car/products/"  (click)="sercahcar()">EXPLORE COLLECTION</a>
+                                    <button class="btn filter-btn ms-3" data-bs-toggle="modal"
+                                        data-bs-target="#filter-modal">
+                                        <img src="assets/img/filter.svg" alt="EXPLORE COLLECTION">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Brand Section-->
+<app-brand></app-brand>
+
+<!--search-->
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12 mb-30">
+                <div class="content">
+                    <div class="section-subtitle">PLANNING TO SELL ? </div>
+                    <!-- <div class="section-title">SELL US YOUR <span> LEGACY IN MINUTES !</span></div> -->
+                    <h2 class="section-title">SELL US YOUR <span> LEGACY IN MINUTES !</span></h2>
+                    <p class="mb-30">
+                    </p>
+                    <div [innerHTML] =  "results?.content"></div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-6  mt-3 text-center text-sm-start">
+                            <div class="icon-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"
+                                    viewBox="0 0 24 25">
+                                    <path fill="#fff" fill-rule="evenodd"
+                                        d="M12.069 21.368a.418.418 0 0 1 0 .835H2.887a.417.417 0 1 1 0-.835h9.182Zm-7.183-11.2a.418.418 0 0 1 0-.835h11.34a.417.417 0 1 1 0 .836H4.887Zm-.734 5.387a.418.418 0 0 1 0-.835h3.345a.418.418 0 0 1 0 .835H4.152Zm5.222 0a.417.417 0 1 1 0-.835h4.977a.419.419 0 0 1 0 .835H9.374Zm-5.222-1.916a.419.419 0 0 1 0-.836h3.345a.417.417 0 1 1 0 .836H4.152Zm5.18 0a.418.418 0 0 1 0-.836h2.244a.417.417 0 1 1 0 .836H9.332ZM1.806 8.333C.808 8.333 0 9.141 0 10.139v7.566a1.775 1.775 0 0 0 1.786 1.786h11.181a5.957 5.957 0 0 1 5.495-5.532v-3.8a1.863 1.863 0 0 0-.521-1.3 1.724 1.724 0 0 0-1.245-.526h-.702l-5.366-7.028a1.357 1.357 0 0 0-2.713 0L2.548 8.333h-.742Zm13.14 0H3.597l4.648-6.087c.02.025.044.049.066.072v-.001a1.358 1.358 0 0 0 1.986-.072l4.65 6.088Zm3.535 9.158a.419.419 0 0 1 .836 0v.405c.14.045.272.111.39.198.236.17.403.419.472.7a.419.419 0 0 1-.301.526.412.412 0 0 1-.325-.056.411.411 0 0 1-.182-.275.405.405 0 0 0-.157-.225.54.54 0 0 0-.316-.098.521.521 0 0 0-.355.131.356.356 0 0 0 0 .541.521.521 0 0 0 .355.132c.339-.002.665.122.917.35a1.186 1.186 0 0 1 0 1.774 1.33 1.33 0 0 1-.498.285v.406a.417.417 0 1 1-.836 0v-.404a1.318 1.318 0 0 1-.39-.198 1.224 1.224 0 0 1-.471-.7.414.414 0 0 1 .302-.524.418.418 0 0 1 .506.33c.025.09.08.17.158.224a.534.534 0 0 0 .313.097.521.521 0 0 0 .355-.131.352.352 0 0 0 0-.541.521.521 0 0 0-.355-.132 1.353 1.353 0 0 1-.916-.35 1.182 1.182 0 0 1 0-1.774 1.32 1.32 0 0 1 .498-.286v-.405Zm5.527 2.398h.001a5.107 5.107 0 0 0-1.497-3.614 5.107 5.107 0 0 0-3.614-1.497h-.02a5.114 5.114 0 0 0-5.09 5.126 5.113 5.113 0 0 0 8.727 3.595 5.11 5.11 0 0 0 1.494-3.61Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="icon-text mt-2 ">
+                                <h3 class="mb-0 text-white h4">100% Secured</h3>
+                                <p>Payment </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-6 mt-3 text-center text-sm-start">
+                            <div class="icon-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none"
+                                    viewBox="0 0 25 25">
+                                    <path fill="#fff"
+                                        d="M13.333 12.5a.834.834 0 0 1-1.666 0 .834.834 0 0 1 1.666 0ZM25 12.5C25 19.393 19.393 25 12.5 25S0 19.393 0 12.5 5.607 0 12.5 0 25 5.607 25 12.5Zm-2.083 0c0-5.744-4.673-10.417-10.417-10.417S2.084 6.756 2.084 12.5 6.756 22.916 12.5 22.916c5.744 0 10.417-4.672 10.417-10.416Zm-.834 0c0 5.284-4.299 9.584-9.583 9.584-5.285 0-9.584-4.3-9.584-9.584 0-5.285 4.3-9.583 9.584-9.583s9.583 4.298 9.583 9.583Zm-10-6.667a.417.417 0 1 0 .834 0v-1.25a.417.417 0 1 0-.834 0v1.25ZM6.25 12.5a.417.417 0 0 0-.417-.417h-1.25a.417.417 0 1 0 0 .834h1.25c.23 0 .417-.187.417-.417Zm1.414 4.837a.417.417 0 0 0-.59 0l-.467.467a.417.417 0 0 0 .59.59l.467-.468a.416.416 0 0 0 0-.59Zm0-10.262-.467-.468a.417.417 0 0 0-.59.59l.467.468a.415.415 0 0 0 .59 0 .416.416 0 0 0 0-.59Zm5.253 12.092a.416.416 0 1 0-.834 0v1.25a.417.417 0 1 0 .834 0v-1.25Zm2.794-4.045-1.781-1.781c.147-.247.236-.532.236-.84 0-.775-.533-1.422-1.25-1.608V7.5a.417.417 0 1 0-.833 0v3.393a1.665 1.665 0 0 0-1.25 1.607 1.67 1.67 0 0 0 1.667 1.667c.308 0 .594-.09.841-.236l1.78 1.78a.413.413 0 0 0 .59 0 .417.417 0 0 0 0-.589Zm2.682 2.681-.467-.467a.417.417 0 0 0-.59.59l.467.467a.415.415 0 0 0 .59 0 .417.417 0 0 0 0-.59Zm0-11.195a.417.417 0 0 0-.59 0l-.467.467a.417.417 0 0 0 .59.59l.467-.468a.417.417 0 0 0 0-.59Zm2.44 5.893a.416.416 0 0 0-.416-.417h-1.25a.417.417 0 1 0 0 .833h1.25c.23 0 .416-.186.416-.416Z" />
+                                </svg>
+
+                            </div>
+                            <div class="icon-text mt-2">
+                                <h3 class="mb-0 text-white h4">Best Offer</h3>
+                                <p>in Minutes</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-6 mt-3 text-center text-sm-start">
+                            <div class="icon-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" fill="none"
+                                    viewBox="0 0 26 25">
+                                    <path fill="#fff"
+                                        d="M24.96 13.814c-.12 0-.199-.08-.199-.16-.12-.556-.318-1.074-.637-1.512a.245.245 0 0 1 .04-.279l.517-.517-.875-.876-.518.478c-.04.04-.08.08-.16.08-.039 0-.079 0-.119-.04-.438-.319-.955-.518-1.552-.637-.12 0-.16-.12-.16-.2v-.716h-1.233v.717c0 .119-.08.199-.16.199a4.418 4.418 0 0 0-1.552.637c-.04.04-.08.04-.12.04-.04 0-.12-.04-.159-.08l-.517-.478-.876.876.517.517c.08.08.08.2.04.28a4.418 4.418 0 0 0-.637 1.552c0 .08-.12.159-.199.159h-.716v1.274h.716c.12 0 .2.08.2.159.119.557.318 1.075.636 1.553.04.08.04.199-.04.278l-.517.518.876.876.517-.518c.04-.04.08-.08.16-.08.04 0 .079 0 .119.04.438.319.955.518 1.552.637.08 0 .16.12.16.2v.716h1.234v-.717c0-.12.08-.199.159-.199.557-.12 1.075-.318 1.513-.637.04-.04.08-.04.119-.04.04 0 .12.04.16.08l.517.518.876-.876-.518-.518a.245.245 0 0 1-.04-.278 4.42 4.42 0 0 0 .637-1.553c0-.08.12-.16.2-.16h.716v-1.273h-.677v-.04Zm-1.95.637a2.353 2.353 0 0 1-2.35 2.349c-1.273 0-2.348-1.075-2.348-2.349a2.353 2.353 0 0 1 2.349-2.349 2.353 2.353 0 0 1 2.348 2.349ZM13.495 6.25a5.754 5.754 0 0 0-.955-2.27.417.417 0 0 1 .04-.517l.676-.676-1.194-1.195-.677.677a.375.375 0 0 1-.517.04 5.167 5.167 0 0 0-2.27-.916.388.388 0 0 1-.318-.398V0H6.568v.955c0 .2-.159.359-.318.398a6.334 6.334 0 0 0-2.27.916.372.372 0 0 1-.517 0l-.676-.677-1.195 1.195.677.676c.16.16.16.359.04.518a5.365 5.365 0 0 0-.916 2.269.388.388 0 0 1-.398.318H0V8.28h.955c.2 0 .359.16.398.319.16.796.478 1.552.916 2.269.12.159.08.398-.04.517l-.637.717 1.195 1.194.676-.677c.16-.119.359-.159.518-.04a5.753 5.753 0 0 0 2.269.956c.199.04.318.199.318.398v.956H8.28v-.956a.43.43 0 0 1 .319-.398 5.752 5.752 0 0 0 2.269-.955c.159-.12.398-.08.517.04l.677.676 1.194-1.194-.676-.677c-.12-.16-.16-.358-.04-.517a5.754 5.754 0 0 0 .955-2.27.388.388 0 0 1 .398-.318h.956V6.608h-.956c-.199-.04-.358-.159-.398-.358Zm-6.05 5.294a4.094 4.094 0 0 1-4.101-4.1c0-2.27 1.831-4.1 4.1-4.1 2.27 0 4.1 1.83 4.1 4.1 0 2.27-1.87 4.1-4.1 4.1Zm6.369 8.997a3.142 3.142 0 0 0-.478-1.194.245.245 0 0 1 .04-.279l.358-.358-.637-.637-.358.358c-.04.04-.08.08-.16.08-.04 0-.08 0-.119-.04a3.142 3.142 0 0 0-1.194-.478c-.08 0-.16-.119-.16-.199v-.517h-.875v.517c0 .12-.08.2-.16.2a3.137 3.137 0 0 0-1.194.477c-.04.04-.08.04-.12.04a.298.298 0 0 1-.158-.08l-.359-.358-.676.637.358.358c.08.08.08.2.04.279a3.142 3.142 0 0 0-.478 1.194c0 .08-.12.16-.199.16h-.518v.875h.518c.12 0 .199.08.199.16.08.437.239.835.478 1.194.04.08.04.199-.04.278l-.358.359.637.637.358-.359c.04-.04.08-.08.16-.08.039 0 .079 0 .119.04a3.14 3.14 0 0 0 1.194.478c.12 0 .159.12.159.2V25h.876v-.518c0-.12.08-.199.159-.199a3.14 3.14 0 0 0 1.194-.478c.04-.04.08-.04.12-.04.04 0 .12.04.159.04l.358.359.637-.637-.358-.358a.245.245 0 0 1-.04-.28c.239-.357.398-.755.478-1.193 0-.08.12-.16.199-.16h.517v-.875h-.517c-.08.04-.16-.04-.16-.12Zm-3.185 2.27a1.64 1.64 0 0 1-1.632-1.633c0-.876.756-1.632 1.632-1.632a1.64 1.64 0 0 1 1.632 1.632 1.64 1.64 0 0 1-1.632 1.632Z" />
+                                </svg>
+                            </div>
+                            <div class="icon-text mt-2">
+                                <h3 class="mb-0 text-white h4">Same Day</h3>
+                                <p>Transactions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-6 mt-3 text-center text-sm-start">
+                            <div class="icon-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" fill="none"
+                                    viewBox="0 0 23 25">
+                                    <path fill="#fff"
+                                        d="M13.84 9.821h-.709l-2.547 2.548a.447.447 0 0 1-.632 0L7.404 9.821h-.708a3.129 3.129 0 0 0-3.125 3.125v7.005l2.233 1.023v-7.135h.892V19c.27-.162.579-.247.893-.25l3.318-.005a6.913 6.913 0 0 1 2.932-.83V13.84h.893v4.085c.77.06 1.525.248 2.232.558v-5.536a3.129 3.129 0 0 0-3.125-3.125Z" />
+                                    <path fill="#fff"
+                                        d="M14.2 18.79c-1 .006-1.982.258-2.86.735l-.108.06a.447.447 0 0 1-.219.058H7.59a.893.893 0 0 0-.893.889c.003.014.004.03.004.044a.888.888 0 0 0 .89.852h4.017v.893h-4.91a.445.445 0 0 1-.187-.04l-3.544-1.625-.04-.02-.22-.1H2.68v-.013l-1.244-.568a1.011 1.011 0 0 0-1.435.92v.098a1.002 1.002 0 0 0 .56.902l5.77 2.89c.31.153.653.234 1 .235h9.634v-5.536a5.97 5.97 0 0 0-2.682-.663.446.446 0 0 1-.082-.01Zm-3.932-7.368 1.6-1.6h-3.2l1.6 1.6Zm7.589 8.221V25h4.91v-5.357h-4.91Zm1.786 4.464h-.893v-.892h.893v.892ZM10.268 7.143a2.681 2.681 0 0 0 2.678-2.679V2.68a2.679 2.679 0 0 0-5.357 0v1.785a2.681 2.681 0 0 0 2.679 2.679ZM8.482 2.679A1.79 1.79 0 0 1 9.672.995l.299.842a.896.896 0 0 0-.596.842v.446h-.893v-.446Z" />
+                                </svg>
+                            </div>
+                            <div class="icon-text mt-2">
+                                <h3 class="mb-0 text-white h4">5500+ Satisfied</h3>
+                                <p>Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div
+                        class="d-flex align-items-center flex-wrap">
+                        <div>
+                            <a href="https://wa.me/{{ settings[6]?.value.split(' ').join('') }}" class="Whatsapp me-0 mb-2" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                        <div class="ms-2">
+                            <a href="tel:{{settings[6]?.value}}" class="call-ua me-0 mb-2" ><i class="fa fa-phone" aria-hidden="true"></i></a>
+                        </div>
+                        <a routerLink="/sellcar" class="button-1 ms-2 mb-2">KNOW MORE <span class="ti-arrow-right"></span></a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-12">
+                <div class="item"> <img src="assets/img/home-new-right (1).jpg" class="img-fluid" alt="Sell Us">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Collections -->
+<section class="section-padding gradient-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-15">
+                <!-- <div class="section-title text-center">Delve Into Goexotic's <span> Exquisite Collection</span></div> -->
+                <h2 class="section-title text-center">Delve Into Goexotic's <span> Exquisite Collection</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="dark-box text-center mt-3">
+                            <img src="assets/img/review.svg" class="box-ico" alt="Expert Review On Luxury Cars">
+                            <h4>Expert Review On Luxury Cars</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dark-box text-center mt-3">
+                            <img src="assets/img/list.svg" class="box-ico" alt="More Than 317 Luxury Cars & It's In Depth Specifications">
+                            <h4>More Than 317 Luxury Cars & It's In Depth Specifications</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dark-box text-center mt-3">
+                            <img src="assets/img/search-car.svg" class="box-ico" alt="Compare Your Favourite Cars">
+                            <h4>Compare Your Favourite Cars</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="devider">&nbsp;</div>
+        <div class="row justify-content-center mt-5" >
+            <div class="col-md-6">
+                <div #youtubeContainer class="youtube-placeholder" style="min-height: 300px;">
+                    <!-- YouTube iframe will load here -->
+                  </div>
+                    
+            </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <a routerlink="/pre-owned-used-luxury-car/products" href="/pre-owned-used-luxury-car/products" class="button-1 mt-5">EXPLORE <span class="ti-arrow-right"></span></a>
+        </div>
+    </div>
+</section>
+<!-- Product Slider -->
+<app-slider></app-slider>
+
+<!-- How it Works -->
+<section class="car-types1 section-padding pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center mb-15">
+                <div class="section-title text-center">HOW IT <span> WORKS ?</span></div>
+                <div [innerHTML] =  "homesection2?.content"></div>
+            </div>
+        </div>
+        <div class="row gx-lg-5 step-line">
+            <div class="col-lg-3 col-md-6">
+                <div class="light-background works-step text-center">
+                    <img src="assets/img/work1.svg" alt="Browse Our Collection">
+                    <div class="mt-3 text-uppercase">Browse Our Collection</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="light-background works-step text-center">
+                    <img class="img-fluid" src="assets/img/work2.svg" alt="Test Your Ride">
+                    <div class="mt-3 text-uppercase">Test Your Ride </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="light-background works-step text-center">
+                    <img src="assets/img/work3.svg" alt="Book Online or Visit Us">
+                    <div class="mt-3 text-uppercase">Book Online or Visit Us </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="light-background works-step text-center">
+                    <img src="assets/img/work4.svg" alt="Get Your Keys">
+                    <div class="mt-3 text-uppercase">Get Your Keys</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

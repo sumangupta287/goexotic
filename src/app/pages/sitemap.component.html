@@ -1,0 +1,37 @@
+<section class="banner-header section-padding ">
+    <!-- <div class="v-middle"> -->
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12">
+                    <div>
+                        <h6 class="mb-0">Sitemap</h6>
+
+                        <!-- <div class="sitemap-tree">
+                            <ul>
+                                <li *ngFor="let url of urls">
+                                    <a [href]="url" target="_blank">{{ extractNameFromURL(url) }}</a>
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        <ul>
+  <ng-container *ngTemplateOutlet="renderNode; context: { nodes: sitemapTree }"></ng-container>
+</ul>
+
+<ng-template #renderNode let-nodes="nodes">
+  <ng-container *ngFor="let node of nodes">
+    <li>
+      {{ node.label }}
+      <ul *ngIf="node.children?.length">
+        <ng-container *ngTemplateOutlet="renderNode; context: { nodes: node.children }"></ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ng-template>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+</section>

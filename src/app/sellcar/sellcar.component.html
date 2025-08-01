@@ -1,0 +1,614 @@
+
+      
+
+        <!-- main banner section -->
+        <section class="banner-section section-padding">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="text-section-banner">
+                            <div class="text-content text-lg-start text-sm-center">
+                                <h1>Selling Your Luxury Car Has Never Been Easy.  
+                                <span>Just Give Us A Call & You Are Done !</span></h1>
+
+                            </div>
+                            <div class="banner-deatil-section">
+                                <div class="icon-text-section">
+                                    <div class="icon-box-item">
+                                        <img src="assets/img/Check-Point.svg"  alt="Check-Point-img">
+                                    </div>
+                                    <div class="icon-text">
+                                        <h5>151 <span>Check Point</span></h5>
+                                    </div>
+                                </div>
+                                <div class="icon-text-section my-4">
+                                    <div class="icon-box-item">
+                                        <img src="assets/img/tome.svg" alt="Check-Point-img">
+                                    </div>
+                                    <div class="icon-text">
+                                        <h5>
+                                            Get Offer  
+                                             <span>In Minutes </span></h5>
+                                    </div>
+                                </div>
+                                <div class="icon-text-section">
+                                    <div class="icon-box-item">
+                                        <img src="assets/img/profile.svg" alt="Check-Point-img">
+                                    </div>
+                                    <div class="icon-text">
+                                        <h5>10000+ Satisfied 
+                                            <span>Clients</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <a href="https://wa.me/{{ settings[6]?.value.split(' ').join('') }}"
+                                            class="btn theme-gradient-btn-1 btn-md mt-3">
+                                            Chat On Whatsapp 
+                                        </a>
+                                    </div>
+                                    <div class="ms-4">
+                                        <a href="tel:{{settings[6]?.value}}" class="button-1 mt-4">Call
+                                            Now:
+                                            {{settings[6]?.value}}
+                                            <span
+                                                class="ti-arrow-right"></span></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="sellyrcar-banner-sec">
+                            <div class="img-section-banner">
+                                <div class="imgs-wrap">
+                                    <div class="imgs-grp">
+                                        <img
+                                            src="assets/img/sellcar-header-new.png"
+                                            alt>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- form and details -->
+        <section class="form-detail authrzdlxrycarbuyr-sec section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Authorized Luxury Car Buyers in India <br>
+                                <span>GOEXOTIC</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="sec-row">
+                            <div class="sec-md-col-50 cntnt-clmn">
+                                <div class="cntnt-grp">
+                                    <ul>
+                                        <li>One of the biggest and <span>most
+                                                trusted</span> brand in the
+                                            industry</li>
+                                        <li>Repeat business with every single
+                                            client over the last <span>17
+                                                years</span></li>
+                                        <li><span>Pan India</span> Presence</li>
+                                        <li><span>ZERO commitment</span>
+                                            failures</li>
+                                        <li>Touching <span>5 Million
+                                                people</span> every month</li>
+                                        <li>10000 + <span>Satisfied</span>
+                                            Clients</li>
+                                        <li>Conclusion of the transaction
+                                            <span>within the same</span> working
+                                            day
+                                        </li>
+                                        <li>100% Payment
+                                            <span>Secured</span>
+                                        </li>
+                                        <li>50% of the cars are
+                                            <span>booked</span> before they are
+                                            ready
+                                        </li>
+                                        <li><span>Fastest stock</span> turn
+                                            around time in the industry</li>
+                                        <li>Transparent and <span>simple
+                                                processes</span></li>
+                                        <li>Not a single <span>litigation</span>
+                                            since <span>inception</span></li>
+                                        <li>A dedicated team of <span>175
+                                                professionals</span> serving you
+                                            24x7</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="sec-md-col-50 frm-clmn">
+                            <div class="frm-grp sellyrcarfrm-grp">
+                                <form method="POST"
+                                    action="https://www.bigboytoyz.com/sellcarform"
+                                    enctype="multipart/form-data">
+                                    <div class="card">
+                                        <div
+                                            class="card-header bg-dark text-light">
+                                            <h2 class="text-center">CONTACT
+                                                US</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                @if(isSubmit == "false"){
+                                                    <h3 class="m-0">  Form Submitted successfully</h3>
+                                                }
+                                                <!-- @if(errors.length > 0){
+                                                    <div >
+                                                    <ul>
+                                                        @for(error of errors; track error){
+                                                            <li class="alert alert-success contact__msg"  role="alert">{{ error }}</li>
+                                                        }
+                                                      
+                                                    </ul>
+                                                  </div>
+                                                } -->
+                                            </div>
+                                            <form [formGroup]="sellcarContactForm" (ngSubmit)="submit()" #errorContainer>
+                                                <div class="form-group">
+                                                    <label for="name">Your Name</label>
+                                                    <input type="text" class="form-control" id="fullname"  placeholder="Enter your name" 
+                                                    formControlName="fullname" [ngClass]="{'error': sellcarContactForm.controls['fullname'].invalid && sellcarContactForm.controls['fullname'].touched}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control" id="email" placeholder="Enter your email" 
+                                                    formControlName="email"  [ngClass]="{'error': sellcarContactForm.controls['email'].invalid && sellcarContactForm.controls['email'].touched}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="mobile">Mobile Number</label>
+                                                    <input type="tel" class="form-control"  id="mobile"    placeholder="Enter your mobile number" 
+                                                    formControlName="mobile" [ngClass]="{'error': sellcarContactForm.controls['mobile'].invalid && sellcarContactForm.controls['mobile'].touched}">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label  for="brand">Brand</label>
+                                                            <input type="text"   class="form-control" id="brand"  placeholder="Enter brand"  
+                                                            formControlName="brand"  [ngClass]="{'error': sellcarContactForm.controls['brand'].invalid && sellcarContactForm.controls['brand'].touched}">
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="model">Model</label>
+                                                            <input type="text"  class="form-control" id="model"  placeholder="Enter model"  
+                                                            formControlName="model" [ngClass]="{'error': sellcarContactForm.controls['model'].invalid && sellcarContactForm.controls['model'].touched}">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="variant">Variant</label>
+                                                            <input type="text" class="form-control"  id="variant" placeholder="Enter variant"  
+                                                            formControlName="variant"  [ngClass]="{'error': sellcarContactForm.controls['variant'].invalid && sellcarContactForm.controls['variant'].touched}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="variant">Upload Images</label>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div  class="inputgrp fileinputgrp">
+                                                            <input type="file" id="brandCopy" (change)="onFileChange($event, 'brandCopy')">
+                                                            <label for="brandCopy">
+                                                                <img src="assets/img/sellcar-placeholderimg.png"  alt="Brand copy">
+                                                            </label>
+                                                        </div>
+                                                       @if(fileErrors['brandCopy']){ <div class="error-message">{{ fileErrors['brandCopy'] }}</div>}
+ 
+                                                        @if(filePreviews['brandCopy']){
+                                                            <div >
+                                
+                                                                <img [src]="filePreviews['brandCopy']" alt="brand Copy" width="100">
+                                                                <!-- <p>{{ files['brandCopy'].name }}</p> -->
+                                                              </div>
+                                                            }
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div  class="inputgrp fileinputgrp">
+                                                            <input type="file"  id="ModelCopy"  (change)="onFileChange($event, 'ModelCopy')">
+                                                            <label for="ModelCopy">
+                                                                <img   src="assets/img/sellcar-placeholderimg.png"  alt="Model Copy">
+                                                                </label>
+                                                        </div>
+                                                        @if(fileErrors['ModelCopy']){ <div class="error-message">{{ fileErrors['ModelCopy'] }}</div>}
+                                                        @if(filePreviews['ModelCopy']){
+                                                            <div >
+                                
+                                                                <img [src]="filePreviews['ModelCopy']" alt="Model Copy" width="100">
+                                                                <!-- <p>{{ files['ModelCopy'].name }}</p> -->
+                                                              </div>
+                                                            }
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="inputgrp fileinputgrp">
+                                                            <input type="file" id="variantCopy"  (change)="onFileChange($event, 'variantCopy')">
+                                                            <label for="variantCopy">
+                                                                <img  src="assets/img/sellcar-placeholderimg.png"  alt="Variant Copy">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    @if(fileErrors['variantCopy']){ <div class="error-message">{{ fileErrors['variantCopy'] }}</div>}
+                                                    @if(filePreviews['variantCopy']){
+                                                        <div >
+                            
+                                                            <img [src]="filePreviews['variantCopy']" alt="variant Copy" width="100">
+                                                            <!-- <p>{{ files['variantCopy'].name }}</p> -->
+                                                          </div>
+                                                        }
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="message">Message</label>
+                                                    <textarea  class="form-control"   id="message" rows="3" placeholder="Enter your message"  formControlName="message"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="g-recaptcha"
+                                                        data-sitekey="your_site_key"></div>
+                                                </div>
+                                                <button type="submit"
+                                                    class="btn btn-dark btn-block">SUBMIT</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--  -->
+        <!-- luxury car  -->
+        <!-- <section class="luxury-car section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12">
+                        <div class="cntnt-grp">
+                            <div class="section-title">
+                                <h2>WHICH LUXURY CAR WOULD YOU
+                                    <br><span>LIKE TO SELL</span>
+                                </h2>
+                            </div>
+                            <ul class="p-0">
+                                <li class="detail-luxury-car">
+                                    <span class="li-innr">
+                                        <span class="img-grp"><img
+                                                src="https://cdn.bigboytoyz.com/new-version/assets/images/sellcar-lxrycr-wldyu-img1.jpg"
+                                                alt="Audi"></span>
+                                        <span class="txt-grp">
+                                            <h6>I want to <strong>sell my used
+                                                    Audi</strong> car</h6>
+                                            <a href="#"><span
+                                                    class="ti-arrow-right"></span></a>
+
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="detail-luxury-car">
+                                    <span class="li-innr">
+                                        <span class="img-grp"><img
+                                                src="https://cdn.bigboytoyz.com/new-version/assets/images/sellcar-lxrycr-wldyu-img2.jpg"
+                                                alt="Mercedes Benz"></span>
+                                        <span class="txt-grp">
+                                            <h6>I want to <strong>sell my used
+                                                    Mercedes Benz</strong>
+                                                Car</h6>
+                                            <a href="#"><span
+                                                    class="ti-arrow-right"></span></a>
+
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="detail-luxury-car">
+                                    <span class="li-innr">
+                                        <span class="img-grp"><img
+                                                src="https://cdn.bigboytoyz.com/new-version/assets/images/sellcar-lxrycr-wldyu-img3.jpg"
+                                                alt="BMW"></span>
+                                        <span class="txt-grp">
+                                            <h6>I want to <strong>sell my used
+                                                    BMW</strong> Car</h6>
+                                            <a href="#"><span
+                                                    class="ti-arrow-right"></span></a>
+
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="detail-luxury-car">
+                                    <span class="li-innr">
+                                        <span class="img-grp"><img
+                                                src="https://cdn.bigboytoyz.com/new-version/assets/images/sellcar-lxrycr-wldyu-img4.jpg"
+                                                alt="Land Rover"></span>
+                                        <span class="txt-grp">
+                                            <h6>I want to <strong>sell my used
+                                                    Land Rover</strong> Car</h6>
+                                            <a href="#"><span
+                                                    class="ti-arrow-right"></span></a>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="detail-luxury-car">
+                                    <span class="li-innr">
+                                        <span class="img-grp"><img
+                                                src="https://cdn.bigboytoyz.com/new-version/assets/images/sellcar-lxrycr-wldyu-img5.jpg"
+                                                alt="Porsche"></span>
+                                        <span class="txt-grp">
+                                            <h6>I want to <strong>sell my used
+                                                    Porsche</strong> Car</h6>
+                                            <a href="#"><span
+                                                    class="ti-arrow-right"></span></a>
+                                        </span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- OTHER BRANDS -->
+        <section class="sellyrcar-otherbrands-sec section-padding pt-0">
+            <div class="container">
+
+                <div class="text-center section-title">
+                    <h2> BRANDS WE BUY
+                    </h2>
+                </div>
+                <div class="brandlist-grp">
+                    <ul>
+                        <li>
+                            <a ><img src="assets/img/Aprilia-logo 1.png"
+                                    alt="Aston Martin"><span class="brndname">Aston
+                                    Martin</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/jaguar-icon.png"
+                                    alt="Jaguar"><span
+                                    class="brndname">Jaguar</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/audi-icon.png"
+                                    alt="Audi"><span
+                                    class="brndname">Audi</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/jeep-icon.png" 
+                                    alt="Jeep"><span
+                                    class="brndname">Jeep</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/bentley-icon.png"
+                                    alt="Bentley"><span
+                                    class="brndname">Bentley</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/bmw-icon.png"
+                                    alt="BMW"><span
+                                    class="brndname">BMW</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/maserati-icon.png"
+                                    alt="Maserati"><span
+                                    class="brndname">Maserati</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/cadillac-icon.png"
+                                    alt="Cadillac"><span
+                                    class="brndname">Cadillac</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/maybach-icon.png"
+                                    alt="Maybach"><span
+                                    class="brndname">Maybach</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/chrysler-icon.png"
+                                    alt="Chrysler"><span
+                                    class="brndname">Chrysler</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/lamborghini-icon.png"
+                                    alt="Citroen"><span
+                                    class="brndname">Lamborghini</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/landrover-icon.png"
+                                    alt="Land Rover"><span class="brndname">Land
+                                    Rover</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/lexus-icon.png"
+                                    alt="Lexus"><span
+                                    class="brndname">Lexus</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/ferrari-icon.png"
+                                    alt="Ferrari"><span
+                                    class="brndname">Ferrari</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/mini-icon.png"
+                                    alt="Mini"><span
+                                    class="brndname">Mini</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img
+                                    src="assets/img/ford-icon.png"
+                                    alt="Ford"><span
+                                    class="brndname">Ford</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/mclaren.png"
+                                    alt="Mclaren"><span
+                                    class="brndname">Mclaren</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/mercedesbenz-icon.png"
+                                    alt="Mercedes-Benz"><span
+                                    class="brndname">Mercedes-Benz</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/hummer-icon.png"
+                                    alt="Hummer"><span
+                                    class="brndname">Hummer</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/porsche-icon.png"
+                                    alt="Hyundai"><span
+                                    class="brndname">Porsche</span></a>
+                        </li>
+
+                        <li>
+                            <a ><img src="assets/img/rollsroyce-icon.png"
+                                    alt="Rolls-Royce"><span
+                                    class="brndname">Rolls-Royce</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <h4> Don't See Your Brand ?</h4><a href="tel:{{settings[6]?.value}}" class="button-1 mt-2"> Call Us Now</a>
+                </div>
+               
+            </div>
+        </section>
+
+        <!--  -->
+        <section class="purchaseusedcar-sec section-padding pt-0">
+            <div class="container">
+                <div class="secheader-grp">
+                    <h3 class="h2 text-center">GOEXOTIC mandate check for
+                        purchasing used
+                        car</h3>
+                </div>
+                <ul class="benefits-list">
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon accidentshield">
+                            </span>
+                            <span class="cntnt">
+                                <h6>No Accidental History</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon litigations"></span>
+                            <span class="cntnt">
+                                <h6>No litigations</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon odometer"></span>
+                            <span class="cntnt">
+                                <h6>No Odometer Tampering</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon recordcheck"></span>
+                            <span class="cntnt">
+                                <h6>National Crime Record <br
+                                        class="hide-1200">Check</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon cardriven"></span>
+                            <span class="cntnt">
+                                <h6>Model 2015 &amp; Above &amp; KMS
+                                    Driven <br class="hide-1200">Less Than
+                                    30,000 only.</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon servicehistory"></span>
+                            <span class="cntnt">
+                                <h6>Service History <br
+                                        class="hide-1200">Check</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon insuranceshield"></span>
+                            <span class="cntnt">
+                                <h6>Insurance History <br
+                                        class="hide-1200">Check</h6>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="li-innr">
+                            <span class="icon evaluation"></span>
+                            <span class="cntnt">
+                                <h6>Physical Evaluation</h6>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+                <div class="btns-grp">
+                    <div
+                        class="d-flex align-items-center justify-content-center">
+                        <div>
+                            <a href="https://wa.me/{{ settings[6]?.value.split(' ').join('') }}"
+                                class="btn theme-gradient-btn-1 btn-md mt-3">
+                                Chat On Whatsapp
+                            </a>
+                        </div>
+                        <div class="ms-4">
+                            <a href="tel:{{settings[6]?.value}}" class="button-1 mt-4">Call
+                                Now: {{settings[6]?.value}}
+                                <span class="ti-arrow-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  -->
+        
+
+        

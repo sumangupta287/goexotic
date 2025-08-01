@@ -1,0 +1,28 @@
+.breadcrumb-wrapper {
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li::after {
+  content: '>';
+  margin: 0 8px;
+  color: #999;
+}
+
+.breadcrumb li:last-child::after {
+  content: '';
+}

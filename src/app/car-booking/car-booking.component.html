@@ -1,0 +1,156 @@
+<section class="banner-header middle-height section-padding bg-img" data-overlay-dark="5" data-background="https://goexotic.co/assets/img/slider/3.jpg" style="background-image: url('https://goexotic.co/assets/img/slider/3.jpg');">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Payment <span>Form</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="car-details py-5 gradient-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h1>  {{results?.car_name}}</h1>
+                                        <div class="detail-price mb-3">
+                                            <div class="price"> @if(results?.price != 0){ ₹ } <span>  {{results?.price_with_comma}}</span></div>
+                                            <div class="emi-options">
+                                                <div class="price"> EMI Starts<span>{{results?.emi_comma}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-9">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/calendar.svg" alt="{{results?.manufacturing_year}}"> MFG. YEAR {{results?.manufacturing_year}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/meter.svg" alt="{{results?.kms_driven_comma}}"> KMS {{results?.kms_driven_comma}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/fuel.svg" alt="{{results?.fuel_type}}"> FUEL TYPE {{results?.fuel_type}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/location.svg" alt="{{results?.registered_state}}"> REG. STATE {{results?.registered_state}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+              
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <div class="form-box">
+                <div class="col-lg-12 col-md-12 mb-30">
+                    @if(results?.is_booked == 1){
+                        
+                        <h2>This car has been booked.</h2>
+                    }
+                    @else{
+                    
+                        @if(paymentSuccessful == 'false'){
+                            <h2>Amount Payable {{bookingDetails.formattedCarPrice}}</h2>
+                        
+                        <form (ngSubmit)="submitBookingDetails()" #bookingForm="ngForm">
+                    
+                        <!-- Name Input -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            [(ngModel)]="bookingDetails.name"
+                            required
+                            placeholder="Enter your name"
+                            class="form-control"
+                            />
+                        </div>
+                    
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="bookingDetails.email"
+                            required
+                            placeholder="Enter your email"
+                            class="form-control"
+                            />
+                        </div>
+                    
+                        <!-- Phone Number Input -->
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            [(ngModel)]="bookingDetails.phone"
+                            required
+                            placeholder="Enter your phone number"
+                            class="form-control"
+                            />
+                        </div>
+                    
+                        <!-- Car ID (Hidden) -->
+                        <input
+                            type="hidden"
+                            name="carId"
+                            [(ngModel)]="bookingDetails.carId"
+                        />
+                    
+                        <!-- Car Price (Hidden) -->
+                        <input
+                            type="hidden"
+                            name="carPrice"
+                            [(ngModel)]="bookingDetails.carPrice"
+                        />
+                    
+                        <!-- Submit Button -->
+                        <button type="submit" [disabled]="!bookingForm.valid" class="theme-gradient-btn px-5 d-block mx-auto">
+                            Submit and Proceed to Payment
+                        </button>
+                    
+                        </form>
+                        }
+                        @else
+                        {
+                        <div  class="e">
+                        <p>Payment successful! Your booking is confirmed.</p>
+                        </div>
+                        }
+                    }
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  

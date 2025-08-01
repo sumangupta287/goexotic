@@ -1,0 +1,33 @@
+@media only screen and (max-width: 505px) {
+    table {
+        display: block;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+}
+.compare-detail .title {
+    background: #222 !important;
+    border-radius: 10px;
+}
+.compare-detail thead th span {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+}
+
+.compare-car table tbody th,
+tr,
+td {
+    text-align: left;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: at; */
+    font-size: 16px;
+}
+
+.compare-detail table tbody .value td {
+    width: 25%;
+}

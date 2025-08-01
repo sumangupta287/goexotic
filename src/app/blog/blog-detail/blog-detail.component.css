@@ -1,0 +1,12 @@
+.blog {
+            padding: 100px 0;
+        }
+
+        .blog .card .card-image {
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .blog .card img {
+            overflow: hidden;
+        }

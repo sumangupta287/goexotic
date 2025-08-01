@@ -1,0 +1,128 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container container-lg">
+        <!-- Logo -->
+        <div class="logo-wrapper">
+
+            @if(settings[3]){
+                
+                 <a class="logo" routerLink="/" > <img src="https://goexotic.co/admin/assets/images{{settings[3].value}}" class="logo-img" alt="GoExotic"> </a>
+            }
+            @else{
+                <a class="logo" routerLink="/" > <img src="assets/img/logo-light.png" class="logo-img" alt="GoExotic"> </a>
+            }
+           
+        </div>
+        <!-- Button -->
+        <button class="navbar-toggler  menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span
+                class="navbar-toggler-icon"><img src="assets/img/menu-ico.svg" class="img-fluid" alt="Menu"></span> </button>
+        <!-- Menu -->
+        <div class="navbar-right">
+            <div class="wrap">
+                <div class="text">
+                    <h5>Buy A Car<a href="tel:{{settings[5]?.value}}">@if(settings[5]){ {{settings[5]?.value}} }</a></h5>
+                </div>
+                <div class="text">
+                    <h5>Sell A Car<a href="tel: {{settings[6]?.value}} ">@if(settings[6]){ {{settings[6]?.value}} }</a></h5>
+                </div>
+            </div>
+            <button class="btn btn-transparent menu-btn">
+                <img src="assets/img/menu-ico.svg" class="img-fluid" alt="Menu">
+            </button>
+        </div>
+    </div>
+</nav>
+<!-- Menu -->
+<div class="menu active">
+    <span class="menu-btn-close">&times;</span>
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-lg-5 d-lg-block d-none">
+                <img src="assets/img/menu-banner.jpg" alt="GoExotic" class="w-100">
+            </div>
+            <div class="col-lg-7">
+                <div class="position-relative h-100">
+                    <ul class="links-container">
+                        <li>
+                            <ul>
+                                <li>
+                                    <a routerLink="/" class="menu-btn-close"><i class="menu-ico-w-px"><img src="assets/img/ico/home-ico.svg" class="menu-ico me-3" alt="Home">
+                                    </i> Home</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/pre-owned-used-luxury-car/products"  class="menu-btn-close ">
+                                        <i class="menu-ico-w-px"><img src="assets/img/ico/car-ico.svg" class="menu-ico me-3" alt="Products"> </i>
+                                        Used Car
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/sellcar"  class="menu-btn-close"><i class="menu-ico-w-px"><img src="assets/img/ico/car-ico.svg" class="menu-ico me-3" alt="Sell Car"> </i>Sell Car
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/newcar"  class="menu-btn-close" ><i class="menu-ico-w-px"><img src="assets/img/ico/car-ico.svg" class="menu-ico me-3" alt="New Car"> </i>New Car
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/comparecar"  class="menu-btn-close"><i class="menu-ico-w-px"><img src="assets/img/ico/car-ico.svg" class="menu-ico me-3" alt="Compare Car"> </i>Compare
+                                        Car
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/emicalculator"  class="menu-btn-close">
+                                        <i class="menu-ico-w-px"><img src="assets/img/ico/calculator.svg" class="menu-ico me-3" alt="Emi Calculator">
+                                        </i>Emi
+                                        Calculator
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a routerLink="/about"  class="menu-btn-close"><i class="menu-ico-w-px">
+                                        <img src="assets/img/ico/about-ico.svg" class="menu-ico me-3" alt="About Us"></i>About
+                                        Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/whyus"  class="menu-btn-close">
+                                        <i class="menu-ico-w-px">
+                                        <img src="assets/img/ico/why-us.svg" class="menu-ico me-3" alt="Why Us"></i>Why Us</a>
+                                </li>
+                                <li>
+                                    <!-- <a routerLink="/career"  class="menu-btn-close">
+                                        <img src="assets/img/ico/career.svg" class="menu-ico me-3" alt="">Career</a> -->
+                                        <a routerLink="/insurance"  class="menu-btn-close">
+                                            <i class="menu-ico-w-px">
+                                                <img src="assets/img/ico/career.svg" class="menu-ico me-3" alt="Insurance">
+                                            </i>Insurance</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/contact"  class="menu-btn-close" >
+                                        <i class="menu-ico-w-px">
+                                        <img src="assets/img/ico/contact-ico.svg" class="menu-ico me-3"  alt="Contact Us"></i>Contact Us</a>
+                                </li>
+
+                                <li>
+                                    <a routerLink="/faq"  class="menu-btn-close" >
+                                        <i class="menu-ico-w-px">
+                                        <img src="assets/img/ico/faq.svg" class="menu-ico me-3" alt="FAQ"></i>FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="mybutton">
+    <a href="{{settings[11]?.value.split(' ').join('')}}" class="Whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+<div id="mybutton-2">
+    <a href="tel:{{settings[13]?.value}}" class="call-ua" ><i class="fa fa-phone" aria-hidden="true"></i></a>
+</div>

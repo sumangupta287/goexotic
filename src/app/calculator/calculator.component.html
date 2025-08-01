@@ -1,0 +1,83 @@
+ <!-- Header Banner -->
+ <section class="banner-header section-padding bg-img" data-overlay-dark="8"
+ data-background="assets/img/comparecar-banner-img.png">
+ <div class="v-middle ">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12 ">
+         <div class="text-center">
+           <h1>EMI CALCULATOR</h1>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</section>
+
+<section class="compare-section">
+ <div class="emi-calculator ">
+   <div class="container">
+     <div class="emi-calculator-content">
+       <div class="section-title text-center">
+       <!--  <h2><span>EMI CALCULATOR</span></h2>-->
+       </div>
+       <form name="emiform" #emiform="ngForm"  >
+       <div class="row">
+         <div class="col-lg-8 col-12">
+           <div class="select-arrow my-3">
+             <select class="form-select select-dark" aria-label="Default select example" name="brand_id" (change)="getProduct($event)">
+               <option selected="">Select Brand</option>
+                @for(brand of allbrand; track brand.brand_id){
+                  <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                  }
+             </select>
+           </div>
+           <div class="select-arrow my-3">
+             <select class="form-select select-dark" aria-label="Default select example" name="carid" (change)="setProductID($event)">
+               <option selected="">Select Product</option>
+               @for(car of results; track car.id){
+                <option [value]="car.id">{{car.car_name}}</option>
+                }
+             </select>
+           </div>
+           <div class="section-title">
+             <h4>Down Payment(Minimum 20%)</h4>
+             ₹<ngx-slider [(value)]="value" [options]="coptions" (userChangeEnd)="calculateEMI1($event)" ></ngx-slider>
+           
+           </div>
+           <div class="section-title">
+             <h4>Annul Interest Rate (%)</h4>
+             <ngx-slider [(value)]="annualinterest" [options]="AIoptions"  (userChangeEnd)="calculateEMI1($event)"></ngx-slider>
+           </div>
+           <div class="section-title">
+             <h4>Term/Period (Month)</h4>
+             <ngx-slider [(value)]="term" [options]="Toptions"  (userChangeEnd)="calculateEMI1($event)"></ngx-slider>
+           </div>
+         </div>
+         <div class="col-lg-4 col-12">
+           <div class="d-flex text-content justify-content-between">
+             <h4>Total Interest Payment</h4>
+             <h4><span>₹</span> {{totalinterestvalue}}</h4>
+           </div>
+           <div class="text-content d-flex justify-content-between">
+             <h4>Total Amount to Pay</h4>
+             <h4><span>₹</span> {{totalamountvalue}}</h4>
+           </div>
+           <div class="d-flex text-content justify-content-between">
+             <div>
+               <h3>EMI</h3>
+               <h6>Monthly Payment </h6>
+             </div>
+             <div class="text-end">
+               <h3> <span>₹ </span>{{emivalue}}</h3>
+               <h6>Calculated on Road Price</h6>
+             </div>
+           </div>
+         </div>
+       </div>
+      </form>
+     </div>
+   </div>
+ </div>
+</section>
+

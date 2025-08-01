@@ -1,0 +1,59 @@
+<!-- Responsive with multiple items + Controls and nav outside -->
+<section class="cars1 section-padding pt-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center mb-30">
+                <div class="section-subtitle"> POPULAR AT</div>
+                <img src="assets/img/title-logo.png" class="title-logo" alt="POPULAR AT">
+            </div>
+        </div> 
+  <owl-carousel-o [options]="customOptions" class="cars1-carousel">
+    @for(result of results; track result.id){
+        <ng-template carouselSlide> 
+            <div class="item">
+            <div class="img"> 
+                <a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(result.brand.brand_name.toLowerCase()), result.slug]">
+                    <img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" width=""> 
+                </a>
+                @if(result.is_soldout){
+                    <span class="soldout">Sold Out</span>
+                }  
+                @if(result.is_booked){
+                    <span class="bookedCar">Booked</span>
+                }
+            </div>
+            <div class="con opacity-1 text-center">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <h2 class="title "><a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(result.brand.brand_name.toLowerCase()), result.slug]">{{result.car_name}}</a></h2>
+                        <div class="info-text justify-content-center"><div class="price">  <h5 class="mb-md-2 mb-0"> @if(result?.price != 0){ ₹ }  {{result?.price_with_comma}}</h5></div></div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col p-sm-2 ">
+                        <div class="info-text justify-content-center ">
+                            <span><img src="assets/img/calendar.svg" class="detail-ico" alt="Model"></span> <span>MFG. YEAR &nbsp;</span> <span>{{result.manufacturing_year}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col p-sm-2 ">
+                        <div class="info-text justify-content-center">
+                            <span><img src="assets/img/meter.svg" class="detail-ico" alt="KMS"></span> <span>KMS  &nbsp; </span><span>{{result.kms_driven_comma}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4  col-sm-6 col p-sm-2 ">
+                        <div class="info-text justify-content-center">
+                            <span><img src="assets/img/fuel.svg" class="detail-ico" alt="FUEL TYPE"></span><span>FUEL TYPE&nbsp;</span><span>{{result.fuel_type}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template> 
+    } 
+     
+  </owl-carousel-o>
+ 
+
+    </div>
+</section> 
+
+
+<!-- Set swiper Option -->

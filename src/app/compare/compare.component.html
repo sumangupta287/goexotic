@@ -1,0 +1,2941 @@
+<section class="banner-header section-padding bg-img" data-overlay-dark="8" data-background="assets/img/comparecar-banner-img.png">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="text-center">
+                        <h1>Compare Cars</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="compare-section">
+    <div class="container">
+        <div class="compare-car">
+            <div class="text-center mb-4">
+                <h2>
+                    Please select at least <span>2 cars for Comparison</span>
+                </h2>
+            </div>
+            <form action="/" name="compare" #compare="ngForm" (ngSubmit)="CompareCar(compare)">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h3>Add First Car</h3>
+                    <div class="select-arrow">
+                        <select class="form-select select-dark" aria-label="Default select example" required name="firstbrandID" (change)="getFirstValue($event,'first')" [(ngModel)]="seletedvalue" #firstBrand="ngModel">
+                          <option [selected]="" [value]="0">Select Brand</option>
+                          @for(brand of allbrand; track brand.brand_id){
+                            <option [value]="brand.brand_id">{{brand.brand_name}}</option>
+                            }
+                        </select>
+                        
+                            @if(firstBrand.touched && firstBrand.value == 0 ){
+                              <span>  Please Selecte First Brand</span>
+                            }
+                        
+                    </div>
+                    <div class="select-arrow">
+                        <select class="form-select my-3 select-dark" aria-label="Default select example" 
+                        required name="firstCarOption" ngModel #firstproduct="ngModel" (change)="setProductValue($event,'0')">
+                          <option [selected] value="">Select Product</option>
+                          @for(car of results1; track car.id){
+                            <option [value]="car.id">{{car.car_name}}</option>
+                            }
+                        </select>
+                        @if(firstproduct.touched && firstproduct.value == 0 ){
+                            <span>  Please Selecte Second Brand</span>
+                          }
+                         
+                          @if(productResult.length != 0){
+                            {{productResult}}
+                          
+                             }
+                    </div>
+                </div>
+            
+                <div class="col-lg-3">
+                    <h3>Add Second Car</h3>
+                    <div class="select-arrow">
+                        <select class="form-select select-dark" aria-label="Default select example"  name="secondbrandID" (change)="getFirstValue($event,'second')" required ngModel #secondBrand="ngModel">
+                          <option [selected] value="">Select Brand</option>
+                          @for(brand of allbrand; track brand.brand_id){
+                            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                            }
+                        </select>
+                        @if(secondBrand.touched && secondBrand.value == 0 ){
+                            <span>  Please Selecte Second Brand</span>
+                          }
+                    </div>
+                    <div class="select-arrow">
+                        <select class="form-select my-3 select-dark" aria-label="Default select example" 
+                        name="secondCarOption"  required ngModel #secondproduct="ngModel" (change)="setProductValue($event,'second')">
+                          <option [selected] value="">Select Product</option>
+                          @for(car of results2; track car.id){
+                            <option [value]="car.id">{{car.car_name}}</option>
+                            }
+                        </select>
+                        @if(secondproduct.touched && secondproduct.value == 0 ){
+                            <span>  Please Selecte Second Product</span>
+                          }
+                         
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h3>Add Third Car</h3>
+                    <div class="select-arrow">
+                        <select class="form-select select-dark" aria-label="Default select example" (change)="getFirstValue($event,'third')" name="thirdbrandID" ngModel>
+                          <option [selected] value="">Select Brand</option>
+                          @for(brand of allbrand; track brand.brand_id){
+                            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="select-arrow">
+                        <select class="form-select my-3 select-dark" aria-label="Default select example" name="thirdCarOption" ngModel>
+                          <option selected="" value="">Select Product</option>
+                          @for(car of results3; track car.id){
+                            <option [value]="car.id">{{car.car_name}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h3>Add Fourth Car</h3>
+                    <div class="select-arrow">
+                        <select class="form-select select-dark" aria-label="Default select example" (change)="getFirstValue($event,'fourth')"  name="fourthbrandID"  ngModel>
+                          <option [selected] value="">Select Brand</option>
+                          @for(brand of allbrand; track brand.brand_id){
+                            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="select-arrow">
+                        <select class="form-select my-3 select-dark" aria-label="Default select example"  name="fourthCarOption" ngModel>
+                      <option selected="" value="">Select Product</option>
+                      @for(car of results4; track car.id){
+                        <option [value]="car.id">{{car.car_name}}</option>
+                        }
+                    </select>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn theme-gradient-btn btn-md mt-3" type="submit"  [disabled]="compare.invalid" >COMPARE NOW</button>
+                </div>
+           
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+
+@if(comapreResult.length != 0){
+<section class="compare-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-0">Full Specification</h2>
+
+                <div class="accordion accordion-flush dark-accordian"
+                    id="accordionFlushExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Overview-headingOne">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Overview-collapseOne"
+                                aria-expanded="false"
+                                aria-controls="Overview-collapseOne">
+                                Overview
+                            </button>
+                        </h2>
+                        <div id="Overview-collapseOne"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Overview-headingOne"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body ">
+                                <table class=" w-100 ">
+                                    <tbody>
+                                        <tr class="title ">
+                                            <td colspan="4">Vehicle
+                                                Type</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.car_category.car_category_name}}</td>
+                                            <td>{{comapreResult[1]?.car_category.car_category_name}}</td>
+                                            <td>{{comapreResult[2]?.car_category.car_category_name}}</td>
+                                            <td>{{comapreResult[3]?.car_category.car_category_name}}</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Engine</td>
+                                        </tr>
+                                        <tr class="value ">
+                                            <td>{{comapreResult[0]?.engine}}</td>
+                                            <td>{{comapreResult[1]?.engine}}</td>
+                                            <td>{{comapreResult[2]?.engine}}</td>
+                                            <td>{{comapreResult[3]?.engine}}</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel</td>
+                                        </tr>
+                                        <tr class="value">
+                                            
+                                            <td>{{comapreResult[0]?.fuel_type}}</td>
+                                            <td>{{comapreResult[1]?.fuel_type}}</td>
+                                            <td>{{comapreResult[2]?.fuel_type}}</td>
+                                            <td>{{comapreResult[3]?.fuel_type}}</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Peak
+                                                Power</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.peak_power}}</td>
+                                            <td>{{comapreResult[1]?.peak_power}}</td>
+                                            <td>{{comapreResult[2]?.peak_power}}</td>
+                                            <td>{{comapreResult[3]?.peak_power}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Engine-headingTwo">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Engine-collapseTwo"
+                                aria-expanded="false"
+                                aria-controls="Engine-collapseTwo">
+                                Engine & Transmission
+                            </button>
+                        </h2>
+                        <div id="Engine-collapseTwo"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Engine-headingTwo"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Engine
+                                                Displacement</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.engine}}</td>
+                                            <td>{{comapreResult[1]?.engine}}</td>
+                                            <td>{{comapreResult[2]?.engine}}</td>
+                                            <td>{{comapreResult[3]?.engine}}</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Power
+                                                Figure</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.peak_power}}</td>
+                                            <td>{{comapreResult[1]?.peak_power}}</td>
+                                            <td>{{comapreResult[2]?.peak_power}}</td>
+                                            <td>{{comapreResult[3]?.peak_power}}</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Torque
+                                                Figure</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.peak_torque}}</td>
+                                            <td>{{comapreResult[1]?.peak_torque}}</td>
+                                            <td>{{comapreResult[2]?.peak_torque}}</td>
+                                            <td>{{comapreResult[3]?.peak_torque}}</td>
+                                        </tr>
+                                        
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Transmission</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>{{comapreResult[0]?.transmission}}</td>
+                                            <td>{{comapreResult[1]?.transmission}}</td>
+                                            <td>{{comapreResult[2]?.transmission}}</td>
+                                            <td>{{comapreResult[3]?.transmission}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                 <!--   <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Hybrid-headingThree">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Hybrid-collapseThree"
+                                aria-expanded="false"
+                                aria-controls="Hybrid-collapseThree">
+                                Hybrid System
+                            </button>
+                        </h2>
+                        <div id="Hybrid-collapseThree"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Hybrid-headingThree"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">E-Motor
+                                                Type/Size</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Permanent Magnet AC
+                                                Synchronous Motor /
+                                                95kWh</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Power
+                                                Figure</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>408Ps / 402BHP</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Torque
+                                                Figure</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>664nm</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Combined
+                                                Power &amp; Torque</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Performance-headingThree">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Performance-collapseThree"
+                                aria-expanded="false"
+                                aria-controls="Performance-collapseThree">
+                                Performance & Efficiency
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Performance-headingThree"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr class="title">
+                                            <td colspan="4">Eco
+                                                Start/Stop System</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Driving
+                                                Modes</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Audi drive select</td>
+                                            <td>Audi drive select</td>
+                                            <td>Audi drive select</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Terrain
+                                                Response Mode</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Active
+                                                Aerodynamics</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Active Air Stream Kidney
+                                                Grille</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Exhaust
+                                                System/Type</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear Axle
+                                                Steering</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Acceleration
+                                                0-100kmph</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>8.0sec</td>
+                                            <td>6.1sec</td>
+                                            <td>5.7sec</td>
+                                            <td>5.9sec</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">TopSpeed</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>213kmph</td>
+                                            <td>240kmph</td>
+                                            <td>200kmph</td>
+                                            <td>250kmph</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel
+                                                Type</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Diesel</td>
+                                            <td>Petrol</td>
+                                            <td>Electric </td>
+                                            <td>Petrol</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel
+                                                Consumption</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>16.55kmpl</td>
+                                            <td>9.7kmpl</td>
+                                            <td>480kms range</td>
+                                            <td>9.7kmpl</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Emission
+                                                Std</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>BS4</td>
+                                            <td>BS6</td>
+                                            <td></td>
+                                            <td>BS6</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Exterior-headingThree">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Exterior-collapseThree"
+                                aria-expanded="false"
+                                aria-controls="Exterior-collapseThree">
+                                Exterior Equipment
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Exterior-headingThree"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr class="title">
+                                            <td colspan="4">Head
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>LED Automatic Headlamps
+                                                with BMW twin hexagonal
+                                                design</td>
+                                            <td>HD LED Automatic
+                                                Headlights w/ Auto-high
+                                                beam assist</td>
+                                            <td>HD Matrix LED Automatic
+                                                Headlights W/ Auto-High
+                                                Beam Assist</td>
+                                            <td>HD Matrix LED Automatic
+                                                Headlights w/ Auto-high
+                                                beam assist</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Head Lamp
+                                                Washer</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">DRLs</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>LED</td>
+                                            <td>LED </td>
+                                            <td>LED </td>
+                                            <td>LED </td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fog
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>LED</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Cornering
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Follow Me
+                                                Home Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rain Sensing
+                                                Wipers</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">ORVM</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Electrically Adjustable
+                                                &amp; Retractable</td>
+                                            <td>Electrically Adjustable
+                                                &amp; Retractable</td>
+                                            <td>Electrically Adjustable
+                                                &amp; Retractable</td>
+                                            <td>Electrically Adjustable
+                                                &amp; Retractable</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Puddle
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heat
+                                                Protecting Glazing
+                                                Windows</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Frameless
+                                                Doors</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Soft Close
+                                                Doors</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Central
+                                                Locking</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Integrated
+                                                Roof Rails</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Aluminium</td>
+                                            <td>Aluminium</td>
+                                            <td>Aluminium</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Glass
+                                                Sunroof</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Panoramic Sunroof</td>
+                                            <td>Panoramic Sunroof</td>
+                                            <td>Panoramic Sunroof</td>
+                                            <td>Panoramic Sunroof</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Tail
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>LED</td>
+                                            <td>LED</td>
+                                            <td>LED</td>
+                                            <td>LED</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fog
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Third Brake
+                                                Light</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Sharkfin
+                                                Antenna</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Wipers</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Defogger</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Power Boot
+                                                Lid Opening</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Side Foot
+                                                Step</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Diffuser</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Spoiler</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Exhaust
+                                                Tips</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Twin Tailpipes - One on
+                                                each side</td>
+                                            <td>Twin Tailpipes</td>
+                                            <td>NA</td>
+                                            <td>Twin Tailpipes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Convertible
+                                                Roof</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Easy Access
+                                                Boot Opener</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Digital
+                                                Display Key</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Sports
+                                                Assisted Key Band</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Other
+                                                Equipment</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>High-Gloss styling
+                                                package</td>
+                                            <td>High-Gloss Styling
+                                                Package</td>
+                                            <td>High-Gloss styling
+                                                package, S-Line Package
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Interior-equipment">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Interior-collapsefour"
+                                aria-expanded="false"
+                                aria-controls="Interior-equipment">
+                                Interior Equipment
+                            </button>
+                        </h2>
+                        <div id="Interior-collapsefour"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Interior-headingfour"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td
+                                                colspan="4">Interior</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Dual Tone</td>
+                                            <td>Mono Tone</td>
+                                            <td>Mono Tone</td>
+                                            <td>Mono Tone</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Interior
+                                                Trim</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Fine-wood trim poplar
+                                                grain grey with
+                                                highlight trim finisher
+                                                Pearl Chrome</td>
+                                            <td>Decorative inserts
+                                                "Aluminium Rhombus"</td>
+                                            <td>Decorative Inserts In
+                                                Dark Matte Brushed
+                                                Aluminum</td>
+                                            <td>Decorative inserts in
+                                                Meshed Aluminium &amp;
+                                                Piano Black</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Gear
+                                                Knob</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Leather</td>
+                                            <td>Leather</td>
+                                            <td>Leather</td>
+                                            <td>Leather</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Side Sill
+                                                Moulding</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>BMW Luxury Line'
+                                                designation in
+                                                Aluminium</td>
+                                            <td>In Aluminium</td>
+                                            <td>In Aluminium</td>
+                                            <td>In Aluminium</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Keyless
+                                                Start/Stop</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Climate
+                                                Control System</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>3-Zone Automatic AC</td>
+                                            <td>3-Zone Automatic AC</td>
+                                            <td>4-Zone Automatic AC</td>
+                                            <td>4-Zone Automatic AC</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">1st Row</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">2nd Row</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>1-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                            <td>2-Zone w/ separate
+                                                Temp./Fan
+                                                Controller</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">3rd Row</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heater</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Vanity
+                                                Mirror</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Driver &amp;
+                                                Co-Driver</td>
+                                            <td>Driver &amp;
+                                                Co-Driver</td>
+                                            <td>Driver &amp;
+                                                Co-Driver</td>
+                                            <td>Driver &amp;
+                                                Co-Driver</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Cabin
+                                                Lamps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Analog
+                                                Clock</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Front
+                                                Armrest</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes w/ storage</td>
+                                            <td>Yes w/ storage</td>
+                                            <td>Yes w/ storage</td>
+                                            <td>Yes w/ storage</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Cupholders</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>2 Front &amp; 2
+                                                Rear</td>
+                                            <td>2 Front &amp; 2
+                                                Rear</td>
+                                            <td>2 Front &amp; 2
+                                                Rear</td>
+                                            <td>2 Front &amp; 2
+                                                Rear</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Cool Glove
+                                                Box</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Armrest</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes w/ cupholders</td>
+                                            <td>Yes w/ two
+                                                cupholder</td>
+                                            <td>Yes w/ two
+                                                cupholder</td>
+                                            <td>Yes w/ two
+                                                cupholder</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Refrigerator</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Smokers
+                                                Package</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">InCar
+                                                Wi-Fi</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Ambient
+                                                Lighting</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes with Welcome
+                                                Carpet</td>
+                                            <td>Light Package Plus</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Wireless
+                                                Charging</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Power
+                                                Socket</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">USB/AUX</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Autodimming
+                                                IRVM</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Autodimming
+                                                ORVM</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Power
+                                                Windows</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>One Touch Up/Down</td>
+                                            <td>One Touch Up/Down</td>
+                                            <td>One Touch Up/Down</td>
+                                            <td>One Touch Up/Down</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear Windows
+                                                Blind</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Powered</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Windsheild Blind</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Powered</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Boot Lid
+                                                Opener</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes w/ Closure</td>
+                                            <td>Yes w/ Closure</td>
+                                            <td>Yes w/ Closure</td>
+                                            <td>Yes w/ Closure</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Child Safety
+                                                Lock</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Steering
+                                                Wheel</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Electric Assisted</td>
+                                            <td>Electrically
+                                                Assisted</td>
+                                            <td>Electrically
+                                                Assisted</td>
+                                            <td>Electrically
+                                                Assisted</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Steering
+                                                wheels Equipments</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Multifunctional Sport
+                                                Leather Steering
+                                                Wheel</td>
+                                            <td>Leather Wrapped
+                                                Multifunctional Plus
+                                                Steering Wheel</td>
+                                            <td>Leather Wrapped
+                                                Multifunctional Double
+                                                Spoke Steering
+                                                Wheel</td>
+                                            <td>Leather Wrapped
+                                                Multifunctional Steering
+                                                Wheel</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heated
+                                                Steering Wheel</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Steering
+                                                Wheel Adjustment</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Manual
+                                                Tilt/Telescopic</td>
+                                            <td>Electrically Adjustable
+                                                Tilt/Telescopic</td>
+                                            <td>Electrically Adjustable
+                                                Tilt/Telescopic</td>
+                                            <td>Electrically Adjustable
+                                                Tilt/Telescopic</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Paddle
+                                                Shifters</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heads Up
+                                                Display</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Electric
+                                                Handbrake</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Instrument
+                                                Cluster</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Analog / Digital</td>
+                                            <td>Analog / Digital</td>
+                                            <td>Audi virtual cockpit
+                                                12.3" LCD digital
+                                                instrument cluster</td>
+                                            <td>Audi virtual cockpit
+                                                12.3" LCD digital
+                                                instrument cluster</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Speedometer</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Analog</td>
+                                            <td>Analog</td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Tachometer</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Analog</td>
+                                            <td>Analog</td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel
+                                                Guage</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Digital </td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Engine Temp
+                                                Guage</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                            <td>Digital</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">MID</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Digital
+                                                Speed</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Gear
+                                                Position Indicator</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Gear
+                                                Shifting Indicator</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Trip Meter:
+                                                Two</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Av
+                                                Speed</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Av Fuel
+                                                Consumption</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Realtime
+                                                Fuel Consumption</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel
+                                                Range</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Low Fuel
+                                                Warning</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Door Ajar
+                                                Warning</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Glass
+                                                Roof</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Panoramic Sunroof</td>
+                                            <td>Panoramic Glass
+                                                Sunroof</td>
+                                            <td>Panoramic Glass
+                                                Sunroof</td>
+                                            <td>Panoramic Glass
+                                                Sunroof</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Emergency
+                                                Spare Wheel</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Other
+                                                Equipment</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Seats-upholstery">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Seats-collapsefive"
+                                aria-expanded="false"
+                                aria-controls="Seats-upholstery">
+                                Seats & Upholstery
+                            </button>
+                        </h2>
+                        <div id="Seats-collapsefive"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Seats-headingfive"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">HD Colour
+                                                Display</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>8.8-inch (22.35 cm)
+                                                Central Information
+                                                Display w/ Touch
+                                                Response </td>
+                                            <td>high-resolution 25.65
+                                                cms (10.1") touch colour
+                                                display</td>
+                                            <td>high-resolution 25.65
+                                                cms (10.1") touch colour
+                                                display</td>
+                                            <td>high-resolution 25.65
+                                                cms (10.1") touch colour
+                                                display</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">In-Built
+                                                Hard Drive</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">CD/DVD
+                                                Player</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">AM/FM
+                                                Radio</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Bluetooth
+                                                Connectivity</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Handsfree / Audio
+                                                Streaming</td>
+                                            <td>Handsfree &amp; Audio
+                                                Streaming</td>
+                                            <td>Handsfree &amp; Audio
+                                                Streaming</td>
+                                            <td>Handsfree &amp; Audio
+                                                Streaming</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Music System
+                                                w/ Power Output</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Harman Kardon Surround
+                                                Sound system (460
+                                                W)</td>
+                                            <td>Audi sound System (180
+                                                W)</td>
+                                            <td>Bang and Olufsen premium
+                                                sound system 705
+                                                Watt</td>
+                                            <td>Bang &amp; Olufsen
+                                                Premium Sound System
+                                                with 3D sound (705
+                                                W)</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">No of
+                                                Speakers</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>16 speakers</td>
+                                            <td>10 Speakers</td>
+                                            <td>16</td>
+                                            <td>16 Speakers</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Apple
+                                                CarPlay</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes w/ Wireless
+                                                Integration</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Android
+                                                Auto</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">GPS
+                                                Navigation</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes w/ 3D Maps</td>
+                                            <td>Yes w/ 3D Maps</td>
+                                            <td>Yes w/ 3D Maps</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">In-Built
+                                                Convenience Apps</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Enhanced
+                                                Voice Control</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Gesture
+                                                Control</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Touchpad /
+                                                Rotary Controller</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>iDrive Controller w/
+                                                Touch Response</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Other
+                                                Equipments</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Audi phone box</td>
+                                            <td>Audi phone box</td>
+                                            <td>Audi phone box</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Entertainment-front">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Entertainment-collapsesix"
+                                aria-expanded="false"
+                                aria-controls="Entertainment-front">
+                                Entertainment Front
+                            </button>
+                        </h2>
+                        <div id="Entertainment-collapsesix"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Entertainment-headingsix"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr class="title">
+                                            <td colspan="4">Front
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Electrical Seat
+                                                Adjustment</td>
+                                            <td>12-Way Electrically
+                                                adjustable front
+                                                seats</td>
+                                            <td>12-Way Electrically
+                                                adjustable front
+                                                seats</td>
+                                            <td>12-Way Electrically
+                                                adjustable front
+                                                seats</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Comfort
+                                                Driver Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Sports Seats w/ 2 Pre
+                                                Set Memory</td>
+                                            <td>Yes w/ 2 Pre-Set
+                                                Memory</td>
+                                            <td>Yes w/ 2 Pre-Set
+                                                Memory</td>
+                                            <td>Yes w/ 2 Pre-Set
+                                                Memory</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Comfort
+                                                Co-Driver Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Sports Seats </td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Electric
+                                                Lumbar Support Driver
+                                                Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes </td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Electric
+                                                Lumbar Support Co-Driver
+                                                Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Height Adjustment Driver
+                                                Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Height Adjustment
+                                                Co-Driver Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Underthigh Extension
+                                                Driver Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Underthigh Extension
+                                                Co-Driver Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Headrest Driver
+                                                Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Headrest Co-Driver
+                                                Seat</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                            <td>Manual</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Ventilated
+                                                Front Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heated Front
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Front Seat
+                                                Massage</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Bench Seat</td>
+                                            <td>Bench</td>
+                                            <td>Bench</td>
+                                            <td>Bench</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Comfort
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Manual Backrest
+                                                Adjustment in 2 tilt
+                                                positions</td>
+                                            <td>NA</td>
+                                            <td>Manually Reclining Back
+                                                rest</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Electric
+                                                Lumbar Support</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered Side
+                                                Bolsters</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Underthigh
+                                                Extension</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Powered
+                                                Headrest</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>Manual</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Ventilated
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Heated
+                                                Seats</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Seat
+                                                Massage</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Executive
+                                                Lounge Seating</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Gentlemen
+                                                Function</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Interior
+                                                Upholstery</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Leather 'Vernasca' </td>
+                                            <td>Leather/Leatherette
+                                                seating surfaces</td>
+                                            <td>Leather/Leatherette
+                                                seating surfaces</td>
+                                            <td>Leather/Leatherette
+                                                seating surfaces</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Headliner</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Anthracite</td>
+                                            <td>Fabric</td>
+                                            <td>Fabric</td>
+                                            <td>Fabric</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Seat
+                                                Belt</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>pyrotechnic belt
+                                                tensioners at front and
+                                                belt force limiters at
+                                                front</td>
+                                            <td>Tension Reducer (TR) +
+                                                Pretensioner + Force
+                                                Limiter</td>
+                                            <td>Tension Reducer (TR) +
+                                                Pretensioner + Force
+                                                Limiter</td>
+                                            <td>Tension Reducer (TR) +
+                                                Pretensioner + Force
+                                                Limiter</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">2nd Row</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>40:20:40 Split Seat</td>
+                                            <td>40:20:40 Split seat</td>
+                                            <td>40:20:40 Split seat</td>
+                                            <td>40:20:40 Split seat</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">3rd Row</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Entertainment-rear">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Entertainment-collapseseven"
+                                aria-expanded="false"
+                                aria-controls="Entertainment-rear">
+                                Entertainment Rear
+                            </button>
+                        </h2>
+                        <div id="Entertainment-collapseseven"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Entertainment-headingseven"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Screens</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Input
+                                                ports</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Other
+                                                Equipments</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Safety-equipments">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Safety-collapseevyght"
+                                aria-expanded="false"
+                                aria-controls="Safety-equipments">
+                                Safety Equipments
+                            </button>
+                        </h2>
+                        <div id="Safety-collapseevyght"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Safety-headingevyght"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Airbags</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>6</td>
+                                            <td>8</td>
+                                            <td>8</td>
+                                            <td>8</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">ABS</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">EBD</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">BA</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">ESP</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">TC</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">TMPS</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Hill Hold
+                                                Assist</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Blind Spot
+                                                Assist</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Lane Keep
+                                                Assist</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Seat Belt
+                                                Warning</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Cruise
+                                                Control</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Limited Slip
+                                                Differential</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Self-Locking Centre
+                                                Differential</td>
+                                            <td>Self-Locking Centre
+                                                Differential</td>
+                                            <td>Self-Locking Centre
+                                                Differential</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Parking
+                                                Sensors</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                            <td>Front &amp; Rear</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Reverse
+                                                Camera</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>YES w/ adaptive
+                                                guidelines</td>
+                                            <td>Yes w/ Adaptive
+                                                Guidelines</td>
+                                            <td>Yes w/ Adaptive
+                                                Guidelines</td>
+                                            <td>Yes w/ Adaptive
+                                                Guidelines</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">360 Arial
+                                                View/Panoramic View</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Parking
+                                                Assistance</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Parking Aid Plus</td>
+                                            <td>Parking Aid Plus</td>
+                                            <td>Parking Aid Plus</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Remote
+                                                Parking</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Remote
+                                                Central Locking</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Regenerative
+                                                Braking</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Seat Belt
+                                                Pretentioners</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Night
+                                                Vision</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Cornering
+                                                Brake Control</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Electric
+                                                Parking Brake</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Vehicle
+                                                Immobiliser</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">ISOFIX Child
+                                                Seat Mounting</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Speed
+                                                Sensing Door Locks</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Emergency
+                                                Rear Brake Light</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Chassis
+                                                construction</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Body
+                                                Construction</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Dual Popup
+                                                Roll Bars
+                                                (in-convertibles)</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Popup Hood
+                                                (During Frontal
+                                                Collision)</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Other Safety
+                                                Equipments</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Attentiveness Assistant,
+                                                Park Distance Control
+                                                (PDC)</td>
+                                            <td>Audi pre sense basic,
+                                                Progressive
+                                                steering</td>
+                                            <td>Audi pre sense basic,
+                                                Progressive
+                                                steering</td>
+                                            <td>Audi pre sense basic,
+                                                Progressive
+                                                steering</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Suspension">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Suspension-collapsenight"
+                                aria-expanded="false"
+                                aria-controls="Suspension">
+                                Suspension, Brakes, Wheels & Tyres
+                            </button>
+                        </h2>
+                        <div id="Suspension-collapsenight"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Suspension-headingnight"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Front
+                                                Suspension</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Independent McPherson
+                                                Strut w/ Adaptive
+                                                Damping Control</td>
+                                            <td>Standard Suspension</td>
+                                            <td>Adaptive Air
+                                                Suspension</td>
+                                            <td>Adaptive Air
+                                                Suspension</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Suspension</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>Multi-Link Rear
+                                                Suspension w/ Dynamic
+                                                Damping Control</td>
+                                            <td>Standard Suspension</td>
+                                            <td>Adaptive Air
+                                                Suspension</td>
+                                            <td>Adaptive Air
+                                                Suspension</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Front
+                                                Brakes</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>M Sport brake with 'M'
+                                                brake callipers in Dark
+                                                Blue </td>
+                                            <td>Ventilated Disc</td>
+                                            <td>Ventilated Disc</td>
+                                            <td>Ventilated Disc</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Brakes</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>M Sport brake with 'M'
+                                                brake callipers in Dark
+                                                Blue </td>
+                                            <td>Ventilated Disc</td>
+                                            <td>Ventilated Disc</td>
+                                            <td>Ventilated Disc</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Front Wheels
+                                                / Tyres</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>48.26 cm (19 inches)
+                                                light alloy wheels
+                                                wrapped in (245/50 R19)
+                                                Run Flat Tyre</td>
+                                            <td>19-inch 5-arm pylon
+                                                style, Matte Titanium
+                                                Gray alloy wheels
+                                                wrapped in 235/55 R19
+                                                Tubeless Tyres</td>
+                                            <td>50.8 Cm (20-Inch), 5-Arm
+                                                Dynamic Style, Graphite
+                                                Gray Alloy Wheels
+                                                Wrapped In 255/50 R20
+                                                Tubeless Tires</td>
+                                            <td>21-inch W-arm,
+                                                cast-alloy wheels
+                                                wrapped in 285/45 R21
+                                                Run-Flat Tyres</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear Wheels
+                                                / Tyres</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>48.26 cm (19 inches)
+                                                light alloy wheels
+                                                wrapped in (245/50 R19)
+                                                Run Flat Tyre</td>
+                                            <td>19-inch 5-arm pylon
+                                                style, Matte Titanium
+                                                Gray alloy wheels
+                                                wrapped in 235/55 R19
+                                                Tubeless Tyres</td>
+                                            <td>50.8 Cm (20-Inch), 5-Arm
+                                                Dynamic Style, Graphite
+                                                Gray Alloy Wheels
+                                                Wrapped In 255/50 R20
+                                                Tubeless Tires</td>
+                                            <td>21-inch W-arm,
+                                                cast-alloy wheels
+                                                wrapped in 285/45 R21
+                                                Run-Flat Tyres</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Dimensions Rear">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Dimensions-collapseten"
+                                aria-expanded="false"
+                                aria-controls="Dimensions-rear">
+                                Dimensions, Weight, Storage, Capacity
+                            </button>
+                        </h2>
+                        <div id="Dimensions-collapseten"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Dimensions-headingten"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Length</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>4752mm</td>
+                                            <td>4682mm</td>
+                                            <td>5014mm</td>
+                                            <td>4986mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Width</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1918mm</td>
+                                            <td>1893mm</td>
+                                            <td>1976mm</td>
+                                            <td>1995mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Height</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1621mm</td>
+                                            <td>1662mm</td>
+                                            <td>1686mm</td>
+                                            <td>1705mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Wheelbase</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>2864mm</td>
+                                            <td>2819mm</td>
+                                            <td>2928mm</td>
+                                            <td>2995mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Front
+                                                Track</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1620mm</td>
+                                            <td>1616mm</td>
+                                            <td>1655mm</td>
+                                            <td>1679mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rear
+                                                Track</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1666mm</td>
+                                            <td>1609mm</td>
+                                            <td>1652mm</td>
+                                            <td>1691mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Ground
+                                                Clearance</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>206mm</td>
+                                            <td>208mm</td>
+                                            <td>172mm</td>
+                                            <td>203mm</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Doors</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>5</td>
+                                            <td>5</td>
+                                            <td>5</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Seating
+                                                Capacity</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>5</td>
+                                            <td>5</td>
+                                            <td>5</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Rows</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Kerb
+                                                weight</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1820kg</td>
+                                            <td>1870 kg</td>
+                                            <td>2595kg</td>
+                                            <td>2115kg</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td
+                                                colspan="4">Bootspace</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>525 Litres</td>
+                                            <td>520 litres</td>
+                                            <td>660 litres</td>
+                                            <td>605 litres</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Fuel
+                                                Capacity</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>1820kg</td>
+                                            <td>70 Litres</td>
+                                            <td>NA</td>
+                                            <td>85 Litres</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Warranty">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Warranty-collapseeleone"
+                                aria-expanded="false"
+                                aria-controls="Warranty-rear">
+                                Warranty & Service Package
+                            </button>
+                        </h2>
+                        <div id="Warranty-collapseeleone"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Warranty-headingeleone"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td
+                                                colspan="4">Warranty</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td></td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                        <tr class="title">
+                                            <td colspan="4">Service
+                                                Package w/ Details</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td></td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                            <td>NA</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"
+                            id="Exterior">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#Entertainment-collapsetwel"
+                                aria-expanded="false"
+                                aria-controls="Exterior">
+                                Exterior Colours
+                            </button>
+                        </h2>
+                        <div id="Entertainment-collapsetwel"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="Entertainment-headingtwel"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="w-100">
+                                    <tbody><tr class="title">
+                                            <td colspan="4">Exterior
+                                                Colours</td>
+                                        </tr>
+                                        <tr class="value">
+                                            <td>White</td>
+                                            <td>Navarra Blue
+                                                Metallic</td>
+                                            <td>Typhoon Grey Metallic
+                                            </td>
+                                            <td>Orca Black</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}
+<section>
+    <div class="silder">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-sm-10">
+                    <div class="section-title mb-0">
+                        <h2>Popular Comparisons</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center justify-content-center ">
+                <div class="col-lg-12 my-4">
+                    <div class=" ">
+                        <owl-carousel-o [options]="customOptions" class="compare-car-carousel">
+                           
+                        <ng-template carouselSlide> 
+                        
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/BMW X7.jpg" alt="BMW X7">
+                                        <p class="mb-0">BMW X7</p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Mercedes Benz GLE 300d.png" alt="Mercedes Benz GLE 300d">
+                                        <p class="mb-0">Mercedes Benz GLE 300d</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Mercedes Benz S 350d.jpeg" alt="Mercedes Benz S 350d">
+                                        <p class="mb-0">Mercedes Benz S 350d</p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Porsche Cayenne.png" alt="Porsche Cayenne">
+                                        <p class="mb-0">Porsche Cayenne </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Rolls Royce Ghost.png" alt="Rolls Royce Ghost">
+                                        <p class="mb-0">Rolls Royce Ghost</p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Range Rover Vogue.png" alt="Range Rover Vogue">
+                                        <p class="mb-0">Range Rover Vogue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Porsche Cayman S.jpg" alt="Porsche Cayman S">
+                                        <p class="mb-0">Porsche Cayman S </p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/BMW 740Li.png" alt="BMW 740Li">
+                                        <p class="mb-0">BMW 740Li</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Hummer H2.png" alt="Hummer H2">
+                                        <p class="mb-0">Hummer H2</p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Mercedes G63 AMG.png" alt="Mercedes G63 AMG">
+                                        <p class="mb-0">Mercedes G63 AMG</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="comper-box">
+                                <div class="row ">
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/BMW 650i Convertible.png" alt="BMW 650i Convertible">
+                                        <p class="mb-0">BMW 650i Convertible</p>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center text-center">
+                                        <div class="vs ">
+                                            <p class="my-0 ">vs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <img src="assets/img/slider/Mercedes Benz S 350d.jpeg" alt="Mercedes Benz S 350d">
+                                        <p class="mb-0">Mercedes Benz S 350d </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

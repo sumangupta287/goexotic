@@ -1,0 +1,108 @@
+<div *ngIf="brandInfo">
+
+
+  <!-- <div *ngIf="brandInfo.car.length > 0; else noCars">
+    <div *ngFor="let car of brandInfo.car" class="car-card">
+      <h4>{{ car.car_name }}</h4>
+      <p>Price: {{ car.price | currency }}</p>
+    </div>
+  </div> -->
+
+  <!-- Header Banner -->
+  <section class="banner-header section-padding bg-img inner-banner" data-overlay-dark="7" data-background="assets/img/slider/3.jpg">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>{{ brandInfo.brand_name }}</h1>
+                    <div [innerHTML] =  "brandInfo?.content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cars -->
+<section class="cars2 section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 car-list">
+                <div class="row">
+                    
+                  @for(result of brandInfo.car; track result.id){ 
+                    <div class="col-lg-4 col-md-6 mb-30">
+                        <div class="item">
+                            <figure>
+                            <a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(brandInfo.brand_name.toLowerCase()), result.slug]">
+                            <img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" class="img-fluid">
+                            </a>
+
+                                
+                            @if(result.is_soldout){
+                                <span class="soldout">Sold Out</span>
+                            }   
+                            @if(result.is_booked){
+                                <span class="bookedCar">Booked</span>
+                            }
+                            </figure>
+                            <div class="content">
+                                <div class="cont">
+
+                                    <h3><a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(brandInfo.brand_name.toLowerCase()), result.slug]" [ngClass]="getFontClass(result.car_name)">{{result.car_name}}</a></h3>
+                                    <div class="book mb-2">
+                                        <div>
+                                         
+                                            <div class="price"> @if(result.price != 0){ ₹ } <span>{{result.price_with_comma}}</span></div>
+                                        </div>
+                                        <div class="emi-options">
+                                            <div class="price"> EMI Starts<span>₹ {{result.emi_comma}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gx-lg-2">
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/calendar.svg" alt="MFG. YEAR"> <span>MFG. YEAR &nbsp;</span><span> {{result.manufacturing_year}}</span> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/meter.svg" alt="KMS"><span> KMS &nbsp;</span><span> {{result.kms_driven_comma}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/fuel.svg" alt="FUEL TYPE"> <span>FUEL TYPE &nbsp;</span><span> {{result.fuel_type}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/location.svg" alt="REG. STATE"><span> REG. STATE &nbsp;</span><span> {{result.registered_state}}</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  }
+                    
+                </div>
+                <!-- Pagination -->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <ng-template #noCars>
+    <p>No cars found for this brand.</p>
+  </ng-template>
+</div>
+ 

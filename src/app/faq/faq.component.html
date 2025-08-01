@@ -1,0 +1,514 @@
+<section class="banner-header section-padding bg-img" data-overlay-dark="7" data-background="assets/img/slider/3.jpg" style="background-image: url('https://goexotic.co/assets/img/slider/3.jpg');">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div>
+                        <h1>FREQUENTLY ASKED QUESTIONS (FAQ) </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding fqus">
+    <div class="container">
+        <ul class="nav justify-content-center nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                    <div> <img src="assets/img/car.svg" alt="Financing A Car"></div>
+                    Financing A Car
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-buying-tab" data-bs-toggle="pill" data-bs-target="#pills-buying" type="button" role="tab" aria-controls="pills-buying" aria-selected="false">
+                    <div> <img src="assets/img/car.svg" alt="Buying A Car"></div>Buying A Car
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-payments-tab" data-bs-toggle="pill" data-bs-target="#pills-payments" type="button" role="tab" aria-controls="pills-payments" aria-selected="false">
+                    <div> <img src="assets/img/car.svg" alt="Selling A Car"></div>Selling A Car
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about" type="button" role="tab" aria-controls="pills-about" aria-selected="false">
+                    <div> <img src="assets/img/car.svg" alt="Payment Procedure"></div>Payment Procedure
+                </button>
+            </li>
+        </ul>
+       
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="accordion accordion-flush dark-accordian mt-5" id="accordionFlushExample">
+                    
+                    
+                       
+                       
+                   
+                    @if(faqlist[0]){
+                        @for(data of faqlist[0]; track data.faq_id){
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Overview-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  [attr.data-bs-target]="'#Overview-collapseOne' + data.faq_id" aria-expanded="false" aria-controls="Overview-collapseOne">
+                                {{data?.faq_title}} 
+                            </button>
+                        </h2>
+                        <div id="Overview-collapseOne{{data.faq_id}}" class="accordion-collapse collapse" aria-labelledby="Overview-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+                                        {{data?.answer}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+                    <!--
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Engine-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Engine-collapseTwo" aria-expanded="false" aria-controls="Engine-collapseTwo">
+                               What is the eligibility criteria for getting a luxury car loan?
+                            </button>
+                        </h2>
+                        <div id="Engine-collapseTwo" class="accordion-collapse collapse" aria-labelledby="Engine-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>
+Eligibility criteria typically include a stable income source, a good credit score, and age between 21 to 65 years. Additional factors such as employment status, residential stability, and existing financial obligations may also be considered.
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Hybrid-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Hybrid-collapseThree" aria-expanded="false" aria-controls="Hybrid-collapseThree">
+                               How much down payment is required for financing a luxury car?
+                            </button>
+                        </h2>
+                        <div id="Hybrid-collapseThree" class="accordion-collapse collapse" aria-labelledby="Hybrid-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                       The down payment required usually ranges from 20% to 40% of the car's value. However, this can vary based on the lender’s policies and your credit profile. We can help you negotiate the best terms to suit your financial situation.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Performance-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Performance-collapseThree" aria-expanded="false" aria-controls="Performance-collapseThree">
+                                What interest rates can I expect for a luxury car loan?
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree" class="accordion-collapse collapse" aria-labelledby="Performance-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Interest rates for luxury car loans in India generally range between 7% to 15% per annum. The exact rate depends on factors such as your credit score, loan amount, tenure, and the specific lender’s terms.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Performance-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Performance-collapseThree" aria-expanded="false" aria-controls="Performance-collapseThree">
+                               How long does it take to get a luxury car loan approved?
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree" class="accordion-collapse collapse" aria-labelledby="Performance-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+The approval process can take anywhere from a few days to a couple of weeks, depending on the lender’s verification process and the completeness of your documentation.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <h4>For further assistance or to start your luxury car financing process, please contact our finance team. We’re here to help you navigate the best options for your unique needs.</h4>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
+                <div class="accordion accordion-flush dark-accordian mt-5" id="accordionFlushExample">
+                    @if(faqlist[1]){
+                        @for(data of faqlist[1]; track data.faq_id){
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Overview-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#Overview-collapseOne' + data.faq_id"  aria-expanded="false" aria-controls="Overview-collapseOne">
+                                {{data?.faq_title}} 
+                            </button>
+                        </h2>
+                        <div id="Overview-collapseOne{{data.faq_id}}" class="accordion-collapse collapse" aria-labelledby="Overview-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        {{data?.answer}}                                     </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+             <!--       <div class="accordion-item">
+                        <h2 class="accordion-header" id="Engine-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Engine-collapseTwo" aria-expanded="false" aria-controls="Engine-collapseTwo">
+                                 How do I know the car is in good condition?
+                            </button>
+                        </h2>
+                        <div id="Engine-collapseTwo" class="accordion-collapse collapse" aria-labelledby="Engine-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                       
+* All our luxury vehicles undergo a rigorous inspection process by certified technicians. We provide a comprehensive vehicle history report and a detailed inspection checklist to ensure transparency and peace of mind.
+3. Do you offer financing options?
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Hybrid-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Hybrid-collapseThree" aria-expanded="false" aria-controls="Hybrid-collapseThree">
+                               Do you offer financing options?
+                            </button>
+                        </h2>
+                        <div id="Hybrid-collapseThree" class="accordion-collapse collapse" aria-labelledby="Hybrid-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                       
+* Absolutely. We provide flexible financing solutions tailored to the needs of luxury car buyers. Our finance team works with various lenders to secure the best terms and rates for our clients.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Performance-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Performance-collapseThree" aria-expanded="false" aria-controls="Performance-collapseThree">
+                                How can I test drive a car I'm interested in?
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree" class="accordion-collapse collapse" aria-labelledby="Performance-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+You can schedule a test drive by contacting our sales team. We offer private and personalised test drive experiences to ensure you have ample time to evaluate the vehicle.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                Can you help with international purchases?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+Yes, we provide global logistics support to facilitate international purchases. We handle all aspects of transportation, customs, and delivery to ensure your car arrives safely and in pristine condition.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                Do you offer customisations for luxury vehicles?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+We work with top-tier customisation and tuning specialists to offer bespoke options for your luxury car. Whether it’s performance upgrades, aesthetic enhancements, or personalised interiors, we can help bring your vision to life.
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                What is the process for purchasing a luxury car online?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+Our online purchasing process is straightforward and secure. After selecting your desired vehicle, our sales team will guide you through the necessary paperwork, financing options, and any additional services. We also offer virtual showings and video consultations.
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                What should I do if I have issues with my car after purchase?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+If you encounter any issues with your vehicle, our dedicated after-sales support team is here to assist you. We offer comprehensive service plans and will ensure that any problems are resolved promptly and efficiently.
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                Do you accept special requests for sourcing specific luxury cars?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Yes, we offer a bespoke sourcing service for clients seeking specific makes and models. Our extensive network allows us to locate rare and exclusive vehicles that meet your exact specifications.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                --><h4>Feel free to contact us with any additional questions or to begin your luxury car buying journey. Our team is here to provide expert guidance and support every step of the way.
+</h4>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-payments" role="tabpanel" aria-labelledby="pills-payments-tab">
+                <div class="accordion accordion-flush dark-accordian mt-5" id="accordionFlushExample">
+                    @if(faqlist[3]){
+                        @for(data of faqlist[3]; track data.faq_id){
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Overview-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#Overview-collapseOne' + data.faq_id"  aria-expanded="false" aria-controls="Overview-collapseOne">
+                                {{data?.faq_title}} 
+                            </button>
+                        </h2>
+                        <div id="Overview-collapseOne{{data.faq_id}}" class="accordion-collapse collapse" aria-labelledby="Overview-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        {{data?.answer}} 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+              <!--      <div class="accordion-item">
+                        <h2 class="accordion-header" id="Engine-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Engine-collapseTwo" aria-expanded="false" aria-controls="Engine-collapseTwo">
+                                What documents are required to sell my luxury car?
+                            </button>
+                        </h2>
+                        <div id="Engine-collapseTwo" class="accordion-collapse collapse" aria-labelledby="Engine-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Required documents include the car's registration certificate (RC), insurance papers, pollution under control (PUC) certificate, service history, original purchase invoice, and any loan closure documents if applicable. 
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Hybrid-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Hybrid-collapseThree" aria-expanded="false" aria-controls="Hybrid-collapseThree">
+                               How do I prepare my luxury car for sale?
+                            </button>
+                        </h2>
+                        <div id="Hybrid-collapseThree" class="accordion-collapse collapse" aria-labelledby="Hybrid-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Ensure the car is thoroughly cleaned and detailed, both inside and out. Fix any minor repairs, ensure all features are working correctly, and consider getting a professional inspection to assure buyers of the car's condition. Maintaining a detailed service history can also add value.
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Performance-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Performance-collapseThree" aria-expanded="false" aria-controls="Performance-collapseThree">
+                                What are the advantages of selling through your agency?
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree" class="accordion-collapse collapse" aria-labelledby="Performance-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Our agency offers a seamless selling experience, including professional appraisal, marketing to a targeted audience, handling negotiations, and managing all the paperwork. We aim to get you the best possible price with minimal effort on your part.
+
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                Can I sell my car if it's not in perfect condition?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+Yes, you can sell a car in any condition. However, being transparent about its condition is crucial. Disclosing any issues upfront can help build trust with potential buyers and avoid disputes later.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                --><h4>For any further questions or to begin the process of selling your luxury car, please contact our sales team. We are here to ensure a smooth and profitable selling experience for you.</h4>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+                <div class="accordion accordion-flush dark-accordian mt-5" id="accordionFlushExample">
+                  
+                    @if(faqlist[2]){
+                        @for(data of faqlist[2]; track data.faq_id){
+                           
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Overview-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#Overview-collapseOne' + data.faq_id"  aria-expanded="false" aria-controls="Overview-collapseOne">
+                                {{data?.faq_title}} 
+                            </button>
+                        </h2>
+                        <div id="Overview-collapseOne{{data.faq_id}}" class="accordion-collapse collapse" aria-labelledby="Overview-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        {{data?.answer}} 
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+              <!--      <div class="accordion-item">
+                        <h2 class="accordion-header" id="Engine-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Engine-collapseTwo" aria-expanded="false" aria-controls="Engine-collapseTwo">
+                              How does the down payment process work?
+                            </button>
+                        </h2>
+                        <div id="Engine-collapseTwo" class="accordion-collapse collapse" aria-labelledby="Engine-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+The down payment is usually a percentage of the car’s total price, paid upfront at the time of booking or purchase. The exact amount will depend on your financing plan or the agreement made during the purchase. This payment can be made through any of the accepted payment methods.
+                              </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Hybrid-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Hybrid-collapseThree" aria-expanded="false" aria-controls="Hybrid-collapseThree">
+                                How secure are the payment methods?
+                            </button>
+                        </h2>
+                        <div id="Hybrid-collapseThree" class="accordion-collapse collapse" aria-labelledby="Hybrid-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+We use secure payment gateways and banking channels to ensure that all transactions are safe and protected. We adhere to industry-standard security practices to safeguard your financial information.
+  
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Performance-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Performance-collapseThree" aria-expanded="false" aria-controls="Performance-collapseThree">
+                               When is the final payment due?
+                            </button>
+                        </h2>
+                        <div id="Performance-collapseThree" class="accordion-collapse collapse" aria-labelledby="Performance-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    
+                                    <li>
+The final payment is typically due before the delivery of the vehicle. If financing is involved, the lender will disburse the loan amount directly to us, and you will need to pay any remaining balance or down payment as agreed. 
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Exterior-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Exterior-collapseThree" aria-expanded="false" aria-controls="Exterior-collapseThree">
+                                Is The Booking Amount Refundable And Are There Any Deductions?
+                            </button>
+                        </h2>
+                        <div id="Exterior-collapseThree" class="accordion-collapse collapse" aria-labelledby="Exterior-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="first-childe-odd">
+                                        
+In case the deal does not happen, the booking amount is 100% refundable within 30 days of the cancellation. 
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                --> <h4>For any further questions or assistance with the payment process, please reach out to our finance team. We are here to ensure a smooth and secure payment experience for your luxury car purchase.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

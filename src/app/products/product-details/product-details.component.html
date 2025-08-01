@@ -1,0 +1,325 @@
+    <!-- Header Banner -->
+    <!-- Details -->
+    <section class="cars1 section-padding pt-120 pb-50">
+      <div class="container-fluid">
+           <!-- <div class="detail-carousel owl-theme owl-carousel"> -->
+            <div  class="magnific-popup">
+           <owl-carousel-o [options]="customOptions" class="detail-carousel owl-theme detail-carousel-arrow ">
+                @for(cargallery of results?.cargallery; track cargallery.id){
+                    <ng-template carouselSlide> 
+                        <div class="item">
+                            <div class="img" magnificPopup >
+                                <a href="https://goexotic.co/admin/uploads/{{cargallery.image_path}}">
+                                    <img src="https://goexotic.co/admin/uploads/{{cargallery.image_path}}" alt="{{results?.car_name}}" style="max-width: 100%;">
+                                </a>
+                                  </div>
+                        </div>
+                </ng-template> 
+                } 
+                
+              </owl-carousel-o>
+            </div>
+      </div>
+  </section>
+  <section class="car-details py-5 gradient-bg">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-12 text-center">
+                                             <app-breadcrumb></app-breadcrumb>
+
+                          <h1>  {{results?.car_name}}</h1>
+                          <div class="detail-price mb-3">
+                              <div class="price"> @if(results?.price != 0){ ₹ } <span>  {{results?.price_with_comma}}</span></div>
+                              <div class="emi-options">
+                                  <div class="price"> EMI Starts<span>{{results?.emi_comma}}</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row justify-content-center">
+                              <div class="col-lg-9">
+                                  <div class="row">
+                                      <div class="col-sm-3 col p-sm-2 ">
+                                          <div class="info-box">
+                                              <img src="assets/img/calendar.svg" alt="{{results?.manufacturing_year}}"><span>MFG. YEAR : </span> <span>{{results?.manufacturing_year}}</span> 
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3 col p-sm-2 ">
+                                          <div class="info-box">
+                                              <img src="assets/img/meter.svg" alt="{{results?.kms_driven_comma}}"><span> KMS </span> <span>{{results?.kms_driven_comma}}</span> 
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3 col p-sm-2 ">
+                                          <div class="info-box">
+                                              <img src="assets/img/fuel.svg" alt="{{results?.fuel_type}}"><span> FUEL TYPE :</span> <span> {{results?.fuel_type}}</span> 
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-3 col p-sm-2 ">
+                                          <div class="info-box">
+                                              <img src="assets/img/location.svg" alt="{{results?.registered_state}}"><span>REG. STATE : </span> <span>{{results?.registered_state}}</span>  
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="button-block mt-4">
+                              <button class="btn border-btn me-3">
+                                  <img src="assets/img/calculator.svg" alt="EMI CALCULATOR">
+                                  <div>EMI CALCULATOR</div>
+                              </button>
+                              <button class="btn border-btn">
+                                  <img src="assets/img/compare.svg" alt="COMPARE">
+                                  <div>COMPARE</div>
+                              </button>
+                              @if(results?.is_soldout != 1 && results?.is_booked != 1)
+                              {
+                                <button (click)="bookNow(results?.id, results?.price)" class="btn theme-gradient-btn rounded fs-18">RESERVE THIS CAR</button>
+                              }
+                              @else{
+                                @if(results?.is_booked == 1){
+                                    <button (click)="enquire(results?.id)"  class="btn theme-gradient-btn rounded fs-18">Enquire</button>
+                                   
+                                }
+                                @else{
+                                    <button class="btn theme-gradient-btn rounded fs-18">SOLD OUT</button>
+                                }
+                               
+                              }
+                             
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Car Summery -->
+  <section class="py-5">
+      <div class="container">
+          <h2 class="text-center mb-5">Car Summary</h2>
+          <div class="row justify-content-center">
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/location.svg" alt="Reg. State">
+                      </div>
+                      <h3>Reg. State</h3>
+                      <p>{{results?.registered_state}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/vehicle-type.svg" class="lg-ico" alt="Vehicle Type">
+                      </div>
+                      <h3>Vehicle Type </h3>
+                      <p>{{results?.car_category.car_category_name}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/calendar.svg" alt="Registration Year">
+                      </div>
+                      <h3>Registration Year</h3>
+                      <p>{{results?.registration_year}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/engine.svg" alt="Engine">
+                      </div>
+                      <h3>Engine</h3>
+                      <p>{{results?.engine}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/setting.svg" alt="Transmission">
+                      </div>
+                      <h3>Transmission </h3>
+                      <p>{{results?.transmission}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/seat.svg" alt="Seating Capacity">
+                      </div>
+                      <h3>Seating Capacity</h3>
+                      <p>{{results?.seating_capacity}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/calendar.svg" alt="Manufacturing Year">
+                      </div>
+                      <h3>Manufacturing Year</h3>
+                      <p>{{results?.manufacturing_year}}</p>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/fuel.svg" alt="Fuel">
+                      </div>
+                      <h3>Fuel</h3>
+                      <p>{{results?.fuel_type}}</p>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-6 mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/owner.svg" alt="Ownership">
+                      </div>
+                      <h3>Ownership</h3>
+                      <p>{{results?.Ownership}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/torque.svg" alt="Peak Torque">
+                      </div>
+                      <h3>Peak Torque </h3>
+                      <p>{{results?.peak_torque}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/power.svg" alt="Peak Power">
+                      </div>
+                      <h3>Peak Power </h3>
+                      <p>{{results?.peak_power}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/door.svg" alt="Doors">
+                      </div>
+                      <h3>Doors </h3>
+                      <p>{{results?.doors}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/drive.svg" alt="Drive">
+                      </div>
+                      <h3>Drive </h3>
+                      <p>{{results?.drive}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/meter.svg" alt="Kms done">
+                      </div>
+                      <h3>Kms done </h3>
+                      <p>{{results?.kms_driven_comma}}</p>
+                  </div>
+              </div>
+              <div class=" col-lg-2  col-md-4 col-6  mb-4">
+                  <div class="car-summery-box">
+                      <div class="icon-box">
+                          <img src="assets/img/ico/setting.svg" alt="Exterior Color">
+                      </div>
+                      <h3>Exterior Color</h3>
+                      <p>{{results?.exterior_color}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section>
+      <div class="container">
+          <div class="devider-line"></div>
+          
+
+          <div class="row justify-content-center">
+            <div class=" col-lg-12  col-md-12 col-12  mb-4">
+                <div class="car-summery-box">
+                    
+                    <div [innerHTML]="results?.overview"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <section class="cars2 section-padding">
+      <div class="container">
+          <h2 class="mb-4 fw-500">RELATED CARS</h2>
+          <div class="row">
+
+              <div class="col-lg-12 col-md-12 car-list">
+                  <div class="row">
+                    @for(result of relatedProducts; track result.id){
+                      <div class="col-lg-4 col-md-6 mb-30">
+                          <div class="item">
+                              <figure><img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" class="img-fluid">
+                                @if(result.is_soldout){
+                                    <span class="soldout">Sold Out</span>
+                                }   
+                                @if(result.is_booked){
+                                    <span class="bookedCar">Booked</span>
+                                }
+                            </figure>
+                              
+                              <div class="content">
+                                  <div class="cont">
+                                      <h3>{{result.car_name}}</h3>
+                                      <div class="book mb-2">
+                                          <div>
+                                              <div class="price"> @if(result.price != 0){ ₹ } <span>{{result.price_with_comma}}</span></div>
+                                          </div>
+                                          <div class="emi-options">
+                                              <div class="price"> EMI Starts<span>₹ {{result.emi_comma}}</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row gx-lg-2">
+                                          <div class="col-sm-6 col p-sm-2">
+                                              <div class="info-box">
+                                                  <img src="assets/img/calendar.svg" alt="MFG. YEAR"><span>  MFG. YEAR </span> <span> {{result.manufacturing_year}}</span>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 col p-sm-2 ">
+                                              <div class="info-box">
+                                                  <img src="assets/img/meter.svg" alt="KMS"><span> KMS </span> <span>{{result.kms_driven_comma}}</span>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 col p-sm-2">
+                                              <div class="info-box">
+                                                  <img src="assets/img/fuel.svg" alt="FUEL TYPE"> <span> FUEL TYPE </span><span> {{result.fuel_type}}</span>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6 col p-sm-2">
+                                              <div class="info-box">
+                                                  <img src="assets/img/location.svg" alt="REG. STATE"><span>  REG. STATE </span> <span> {{result.registered_state}}</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    }
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+  

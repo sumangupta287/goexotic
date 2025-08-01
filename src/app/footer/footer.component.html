@@ -1,0 +1,366 @@
+<!-- Footer -->
+<footer class="footer ">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 widget-area">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="widget">
+                                <h3 class="widget-title mb-lg-0 mb-3 text-lg-start text-center">
+                                    <!-- <a href="tel:{{settings[5]?.value}}"> -->
+                                    <span class="fw-bold">BUY OR SELL</span> YOUR CAR
+                                    <!-- </a> -->
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="widget-newsletter text-lg-end text-center align-items-center gap-3">
+                                <!--<h4 class="mb-0">
+                                    <a href="tel:{{settings[5]?.value}}">BUY OR SELL YOUR CAR</a>
+                                </h4> -->
+                                <a class="button-1 fw-medium ms-auto fs-5" href="https://wa.me/{{ removeSpaces(settings[5]?.value) }}">Chat With Us
+                                    <span class="ti-arrow-right"></span></a>
+                                <!-- <form [formGroup]="newsletterForm" (ngSubmit)="submit()" class="position-relative">
+                                        <input type="email" class="mb-0" placeholder="Email Address"  id="email_newsletter" placeholder="Enter your email" 
+                                        formControlName="email_newsletter"  [ngClass]="{'error': newsletterForm.controls['email_newsletter'].invalid && newsletterForm.controls['email_newsletter'].touched}">
+                                        <button type="submit"><i class="ti-arrow-right"></i></button>
+                                        @if(flashMessage){
+                                            <span class="flash-message">
+                                            {{ flashMessage }}
+                                            </span>
+                                        }
+                                        <span class="error-message">{{ isSubmit }}</span>
+                                    </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-middle gradient-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="widget clearfix">
+                        <div class="footer-logo"><img src="assets/img/logo-light.png" alt="GoExotic"></div>
+                        <div class="widget-text">
+                            <div class="m-col-12">
+                                <ul class="contact-widget p-0">
+                                    <li>
+                                        <a routerLink="/goexoticsquard">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <img src="assets/img/pin-ico.svg" alt=" {{settings[7]?.value}}">
+                                                </div>
+                                                <div>
+                                                    {{settings[7]?.value}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:{{settings[8]?.value}}"><img src="assets/img/mail-ico.svg"
+                                                alt="{{settings[8]?.value}}">{{settings[8]?.value}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="m-row">
+                                <div class="m-col-6">
+                                    <h3 class="widget-title mb-1">Sell A Car</h3>
+                                    <ul class="contact-widget p-0">
+                                        <li>
+                                            <a href="tel:{{settings[6]?.value}}"><img src="assets/img/call-ico.svg"
+                                                    alt="{{settings[6]?.value}}">{{settings[6]?.value}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="m-col-6">
+                                    <h3 class="widget-title mb-1">Buy A Car</h3>
+                                    <ul class="contact-widget p-0">
+                                        <li>
+                                            <a href="tel:{{settings[5]?.value}}"><img src="assets/img/call-ico.svg"
+                                                    alt="{{settings[5]?.value}}">{{settings[5]?.value}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-md-3 col-6 widget-area">
+                            <div class="widget clearfix usful-links">
+                                <h3 class="widget-title">COMPANY</h3>
+                                <ul>
+                                    <li><a routerLink="/whyus">Why Us</a></li>
+                                    <li><a routerLink="/about">About Us</a></li>
+                                    <!-- <li><a routerLink="/career">Career</a></li> -->
+
+                                    <li><a routerLink="/insurance">Insurance</a></li>
+                                    <li><a routerLink="/ourshowroom">Our Showroom</a></li>
+                                    <li><a routerLink="/goexoticsquard">GoExotic Squard</a></li>
+                                    <li><a routerLink="/sitemap">Sitemap</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 widget-area">
+                            <div class="widget clearfix usful-links">
+                                <h3 class="widget-title">HELP</h3>
+                                <ul>
+                                    <li><a routerLink="/customersupport">Customer Support</a></li>
+                                    <li><a routerLink="/deliverydetails">Delivery Details</a></li>
+                                    <li><a routerLink="/terms">Terms & Conditions</a></li>
+                                    <li><a routerLink="/privacypolicy">Privacy Policy</a></li>
+                                    <li><a routerLink="/contact">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 widget-area">
+                            <div class="widget clearfix usful-links">
+                                <h3 class="widget-title">GENERAL</h3>
+                                <ul>
+                                    <li><a routerLink="/sellcar">Sell Car</a></li>
+                                    <li><a routerLink="/faq">FAQs</a></li>
+                                    <li><a routerLink="/videos">Videos</a></li>
+                                    <li><a routerLink="/blog">Blog</a></li>
+                                    <li><a routerLink="/autoguide">Auto Guide</a></li>
+                                    <li><a routerLink="/financeinsurance">Finance & Insurance</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 widget-area footerstyle">
+                            <div class="widget clearfix usful-links">
+                                <h3 class="widget-title">STYLE</h3>
+                                <ul>
+                                    <li><span (click)="searchByCarType(1,'Pre-owned SUV')">Pre-owned SUV</span></li>
+                                    <li><span (click)="searchByCarType(2,'Pre-owned Sedan')">Pre-owned Sedan</span></li>
+                                    <li><span (click)="searchByCarType(3,'Pre-owned convertible')">Pre-owned Convertible</span></li>
+                                    <li><span (click)="searchByCarType(4,'Pre-owned coupe')">Pre-owned Coupe</span></li>
+                                    <li><span (click)="searchByCarType(5,'Pre-owned Sports')">Pre-owned Sports</span></li>
+                                    <li><span (click)="searchByCarType(8,'Pre-owned MUV-MPV')">Pre-owned MUV-MPV</span></li>
+                                    <li><span (click)="searchByCarType(9,'Pre-owned Hatchback')">Pre-owned Hatchback</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-brand-list footerstyle">
+                <div class="brand-title widget-title">BRANDS</div>
+
+                <ul class="brand-list">
+
+
+                    @for(brand of allbrand; track brand.brand_id){
+                    <li><span (click)="searchByBrandId( brand.brand_id,brand.brand_name )">{{brand.brand_name}}</span>
+                    </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+        <!-- bottom footer -->
+        <div class="container">
+            <div class="row copyright">
+                <div class="col-md-9">
+                    <div class="d-md-flex align-items-center d-block text-center text-md-start">
+                        <p class="mb-0">Copyright © 2024 GOEXOTIC</p>
+                        <ul class="cms-link mb-0 p-0 d-flex flex-wrap">
+                            <li><a routerLink="/privacypolicy">Privacy Policy</a></li>
+                            <li><a routerLink="/cancellationrefund">Cancellation & Refund</a></li>
+                            <li><a routerLink="/terms">Terms of use</a></li>
+                            <li><a routerLink="/sitemap">Site Map</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="social-icons text-md-end text-center mt-md-0 mt-3">
+                        <ul class="list-inline">
+                            <li><a href="https://wa.me/{{settings[11]?.value.split(' ').join('')}}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            <li><a href="{{settings[9]?.value}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="{{settings[10]?.value}}"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Filter Modal -->
+<div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="filtermodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header justify-content-end pb-0">
+                <button class="btn btn-reset m-0 me-2"><img src="assets/img/ico/reset.svg" class="me-2"
+                        alt="Reset">Reset</button>
+                <button type="button" class="btn-close d-flex align-items-center justify-content-center m-0"
+                    data-bs-dismiss="modal" aria-label="Close">
+                    <img src="assets/img/ico/close.svg" alt="Close">
+                </button>
+            </div>
+            <div class="modal-body pt-0">
+                <form action="/" name="search" #search="ngForm" (ngSubmit)="sercahcar(search)">
+                    <div class="filter-bg">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="filter-section">
+                                    <div class="title-section-filter">
+                                        <h4>Registration Year</h4>
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="text-center p-0 me-3">
+                                            <input type="radio" id="year1" name="registration_year"
+                                                [(ngModel)]="searchObj.registration_year" value="2000-2010">
+                                            <label for="year1">2000-2010</label>
+                                        </div>
+                                        <div class="text-center p-0 me-3">
+                                            <input type="radio" id="year2" name="registration_year"
+                                                [(ngModel)]="searchObj.registration_year" value="2010-2015">
+                                            <label for="year2">2010-2015 </label>
+                                        </div>
+                                        <div class="text-center p-0 me-3">
+                                            <input type="radio" id="year3" name="registration_year"
+                                                [(ngModel)]="searchObj.registration_year" value="2015-2020">
+                                            <label for="year3">2015-2020</label>
+                                        </div>
+                                        <div class="text-center p-0 me-3">
+                                            <input type="radio" id="all" name="registration_year"
+                                                [(ngModel)]="searchObj.registration_year" value="all">
+                                            <label for="all">2023 & Above</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="filter-section">
+                                    <div class="title-section-filter">
+                                        <h4>KMS Driven</h4>
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="0" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="new">
+                                            <label for="new">Brand New</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="0-5000" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="km0">
+                                            <label for="km0">0-5000</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="5000-10000" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="km1">
+                                            <label for="km1">5000-10000</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="10000-15000" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="km2">
+                                            <label for="km2">10000-15000 </label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="15000-20000" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="km3">
+                                            <label for="km3">15000-20000</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" value="20001" name="kms_driven"
+                                                [(ngModel)]="searchObj.kms_driven" id="km4">
+                                            <label for="km4">20000 & Above</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="filter-section">
+                                    <div class="title-section-filter">
+                                        <h4>Budget</h4>
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" name="budget"
+                                                [(ngModel)]="searchObj.budget" value="50" id="budget1">
+                                            <label for="budget1">Less Than 50L</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" name="budget"
+                                                [(ngModel)]="searchObj.budget" value="50-1" id="budget2">
+                                            <label for="budget2">50L to 1Cr</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" name="budget"
+                                                [(ngModel)]="searchObj.budget" value="1-1.5" id="budget3">
+                                            <label for="budget3">1Cr to 1.5Cr</label>
+                                        </div>
+                                        <div class="text-center  p-0 me-3">
+                                            <input type="radio" class="btn-check" name="budget"
+                                                [(ngModel)]="searchObj.budget" value="1.5" id="budget4">
+                                            <label for="budget4">1.5Cr & Above</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="filter-section ">
+                                    <div class="title-section-filter">
+                                        <h4>Body Type</h4>
+                                    </div>
+                                    <div class="d-flex align-items-center flex-wrap">
+
+                                        @for(category of carcategory; track category){
+                                        <div class="text-center  p-0 me-3 col-md-2 col-sm-3 col-6">
+                                            <input type="radio" class="btn-check" [(ngModel)]="searchObj.carcategoryid"
+                                                id="category{{category.car_category_id}}"
+                                                value="{{category.car_category_id}}" name="carcategoryid">
+                                            <label
+                                                for="category{{category.car_category_id}}">{{category.car_category_name}}
+                                                <div class="svg-car">
+                                                    <img width="50"
+                                                        src="https://goexotic.co/admin/assets/images/{{category.car_category_icon}}"
+                                                        alt="{{category.car_category_name}}">
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="title-section-filter">
+                                    <h4>Brands</h4>
+                                </div>
+                                <div class="select-arrow">
+                                    <select class="form-select select-dark" name="brandID" id="brandID"
+                                        aria-label="Default select example" [(ngModel)]="searchObj.brandID">
+                                        <option selected>Select Brand</option>
+                                        @for(brand of allbrand; track brand.brand_id){
+                                        <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="filter-submit">
+                                    <button type="submit" class="btn theme-gradient-btn" data-bs-dismiss="modal">APPLY
+                                        FILTER</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

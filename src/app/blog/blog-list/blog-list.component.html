@@ -1,0 +1,110 @@
+
+<!-- Header Banner -->
+    <section class="banner-header section-padding bg-img" data-overlay-dark="7" style="background-image: url('https://goexotic.co/assets/img/slider/3.jpg');">
+        <div class="v-middle">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12 text-center">
+                        <div>
+                            <h6 class="mb-0">GoExotic</h6>
+                            <h2>Blog</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-list section-padding">
+        <div class="container py-4">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3 mb-4">
+                   
+                    <form method="get" (submit)="$event.preventDefault()">
+                        <div class="search-bar mb-3">
+                            <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search for brand or type of car..."
+                            [(ngModel)]="searchTerm"
+                            name="search"
+                            (keyup)="onSearchChange()"
+                            />
+                        </div>
+                    </form>
+
+                    <div class="sidebar">
+                        <h5>Latest Car</h5>
+                        <div class="mt-3">
+                            @for(result of latestcar; track result.id){
+                                <div class="latest-article-item">
+                                    <img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" class="img-fluid">
+                                <div>
+                                    <div class="article-title"><a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(result.brand.brand_name.toLowerCase()), result.slug]" [ngClass]="getFontClass(result.car_name)">{{result.car_name}}</a></div>
+                                    <div class="article-info">{{result.brand.brand_name}}</div>
+                                </div>
+                            </div>
+                            }
+                            
+                            
+                        </div>
+                    </div>
+
+                    <div class="sidebar mt-3"  *ngIf="tags">
+                        <h6>Tags</h6>
+                            <button
+                                *ngFor="let tag of tags; trackBy: trackById"
+                                class="btn btn-sm tag-btn"
+                                (click)="onTagSelect(tag.slug)">
+                                {{ tag.tag_name }}
+                            </button>
+
+                        <!-- <button *ngFor="let tag of tags; trackBy: trackById" class="btn btn-sm tag-btn">{{ tag.tag_name }}</button> -->
+                        <!-- <button class="btn btn-sm tag-btn">Sports Car</button>
+                        <button class="btn btn-sm tag-btn mt-2">Luxury Car</button> -->
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <div class="row">
+                        <!-- <div *ngFor="let blog of blogs; trackBy: trackById" class="blog-box">
+  <h2 [innerHTML]="blog.post_title"></h2>
+  <img [src]="blog.featured_image" alt="{{ blog.post_title }}">
+  <p>{{ blog.excerpt }}</p>
+</div> -->
+                        <!-- Repeat this card -->
+                        <div *ngFor="let blog of blogs; trackBy: trackById"  class="col-md-6 col-xl-6">
+                            <div class="card card-custom">
+                                <a [routerLink]="['/blog/details/',blog.slug]">
+                                    <img src="http://localhost/goexoctic/assets/images/{{blog.featured_image}}"  alt="{{ blog.post_title }}" class="card-img-top" alt="Car">
+                                </a>    
+                                <div class="card-body">
+                                    <h6 class="card-title" [innerHTML]="blog.post_title">Lore am text</h6>
+                                    <p class="card-text">{{ blog.excerpt }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+
+                        
+
+                        <!-- Add more cards as needed -->
+                        <!-- Repeat above structure 4 more times or dynamically generate -->
+                    </div>
+                </div>
+                <app-pagination [totalItems]="totalPages" [pageSize]="9" (pageChange)="changePage($event)"></app-pagination>
+
+                <!-- <nav class="pagination">
+                <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+                <span>Page {{ currentPage }} of {{ totalPages }}</span>
+                <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+                </nav> -->
+            </div>
+        </div>
+    </section>
+
+

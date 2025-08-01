@@ -1,0 +1,19 @@
+.text.whatsapp-icon .fa-whatsapp:before {
+    color: #fff;
+    font-size: 28px;
+}
+
+.text.whatsapp-icon {
+    background: linear-gradient(90deg,
+            #715126 0%,
+            #D0B672 100%);
+    display: flex;
+    width: 55px;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.d-contents{
+    display: contents;
+}

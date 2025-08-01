@@ -1,0 +1,27 @@
+
+<section class="search-section">
+    <div class="container">
+        <div class="bg-search">
+            <!-- <div class="section-title text-center">SELECT <span> BRAND</span></div> -->
+             <h2 class="section-title text-center">SELECT <span> BRAND</span></h2>
+            <div class="">
+                <owl-carousel-o [options]="customOptions" class=" ">
+                    @for(brand of data; track brand.brand_id){
+                        <ng-template carouselSlide> 
+                            <div class="" >
+                                <div class="box-search">
+                                    <input type="hidden" name="brandID" id="brandID" [(ngModel)]="searchObj.brandID" value="{{brand.brand_id}}">
+                           
+                                    <img src="https://goexotic.co/admin/assets/images/{{brand.brand_icon}}" class="owl-lazy" alt="{{brand.brand_name}}" (click)="sercahcar(brand.brand_id,brand.brand_name)">
+                                </div>
+                            </div>
+                    </ng-template> 
+                    } 
+                     
+                  </owl-carousel-o>
+               
+            </div>
+           
+        </div>
+    </div>
+</section>

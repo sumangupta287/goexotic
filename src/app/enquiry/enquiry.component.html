@@ -1,0 +1,98 @@
+<section class="banner-header middle-height section-padding bg-img" data-overlay-dark="5" data-background="https://goexotic.co/assets/img/slider/3.jpg" style="background-image: url('https://goexotic.co/assets/img/slider/3.jpg');">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Enquiry <span>Form</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="car-details py-5 gradient-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h1>  {{results?.car_name}}</h1>
+                                        <div class="detail-price mb-3">
+                                            <div class="price"> @if(results?.price != 0){ ₹ } <span>  {{results?.price_with_comma}}</span></div>
+                                            <div class="emi-options">
+                                                <div class="price"> EMI Starts<span>{{results?.emi_comma}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-9">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="info-box ">
+                                                            <img src="assets/img/calendar.svg" alt="{{results?.manufacturing_year}}"> MFG. YEAR {{results?.manufacturing_year}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/meter.svg" alt="{{results?.kms_driven_comma}}"> KMS {{results?.kms_driven_comma}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/fuel.svg" alt="{{results?.fuel_type}}"> FUEL TYPE {{results?.fuel_type}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="info-box">
+                                                            <img src="assets/img/location.svg" alt="{{results?.registered_state}}"> REG. STATE {{results?.registered_state}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+              
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <div class="form-box enquiry">
+                    <div class="col-lg-12 col-md-12 mb-30">
+                    @if(isSubmit == 'false'){
+                        <form (ngSubmit)="onSubmit()" #enquiryForm="ngForm">
+                        <input type="hidden" name="carId" [(ngModel)]="enquiryData.carId" />
+
+                        <label>Name:</label>
+                        <input type="text" name="name" [(ngModel)]="enquiryData.name" required />
+
+                        <label>Email:</label>
+                        <input type="email" name="email" [(ngModel)]="enquiryData.email" required />
+
+                        <label>Phone:</label>
+                        <input type="tel" name="phone" [(ngModel)]="enquiryData.phone" required />
+
+                        <label>Message:</label>
+                        <textarea name="message" [(ngModel)]="enquiryData.message" required></textarea>
+
+                        <button type="submit" [disabled]="enquiryForm.invalid" class="theme-gradient-btn px-5 d-block mx-auto">Submit</button>
+                        </form>
+                    }
+                    @else
+                    {
+                    <div  class="e">
+                    <p>We have received your enquiry. We will contact you as early as possible.</p>
+                    </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

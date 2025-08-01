@@ -1,0 +1,136 @@
+
+  <!-- Header Banner -->
+  <section class="banner-header section-padding bg-img inner-banner" data-overlay-dark="7" data-background="assets/img/slider/3.jpg">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Luxury <span>Car Fleet</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="listing-top-section">
+    <div class="container">
+       
+
+        <div class="bg-search p-4 inner-filter-box">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                     <app-breadcrumb></app-breadcrumb>
+                    <h2 class="count-title mb-lg-0">Total {{totalItems}} results found</h2>
+                </div>
+                <div class="col-md-5">
+                    <div class="browse-btn-box d-flex justify-content-md-end justify-content-center align-items-center">
+                        <button class="btn filter-btn ms-3" data-bs-toggle="modal" data-bs-target="#filter-modal">
+                          <img src="assets/img/filter.svg" alt="Filter">
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <label class="sort-label d-none d-md-block">Sort By :</label>
+                            <div class="select-arrow">
+                                <select class="form-select" ngModel aria-label="Default select example" (change)="changeOrder($event)" name="orderby" id="orderby" >
+                                <!-- <option value="" [selected]="search.orderby==''">Price</option> -->
+                                <option value="DESC" [selected]="search.orderby == 'DESC'">High to Low</option>
+                                <option value="ASC" [selected]="search.orderby == 'ASC'">Low to High</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Cars -->
+<section class="cars2 section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 car-list">
+                <div class="row">
+                    
+                  @for(result of results; track result.id){ 
+                    <div class="col-lg-4 col-md-6 mb-30">
+                        <div class="item">
+                            <figure>
+                            <!-- <a [routerLink]="['/products/details', result.slug]">
+                                <img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" class="img-fluid">
+                            </a> -->
+                            <a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(result.brand.brand_name.toLowerCase()), result.slug]">
+                            <img src="https://goexotic.co/admin/assets/images/{{result.primary_image}}" alt="{{result.car_name}}" class="img-fluid">
+                            </a>
+
+                                
+                            @if(result.is_soldout){
+                                <span class="soldout">Sold Out</span>
+                            }   
+                            @if(result.is_booked){
+                                <span class="bookedCar">Booked</span>
+                            }
+                            </figure>
+                            <div class="content">
+                                <div class="cont">
+
+                                    <h3><a [routerLink]="['/pre-owned-used-luxury-car', formatCarName(result.brand.brand_name.toLowerCase()), result.slug]" [ngClass]="getFontClass(result.car_name)">{{result.car_name}}</a></h3>
+                                    <div class="book mb-2">
+                                        <div>
+                                         
+                                            <div class="price"> @if(result.price != 0){ ₹ } <span>{{result.price_with_comma}}</span></div>
+                                        </div>
+                                        <div class="emi-options">
+                                            <div class="price"> EMI Starts<span>₹ {{result.emi_comma}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gx-lg-2">
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/calendar.svg" alt="MFG. YEAR"> <span>MFG. YEAR &nbsp;</span><span> {{result.manufacturing_year}}</span> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/meter.svg" alt="KMS"><span> KMS &nbsp;</span><span> {{result.kms_driven_comma}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/fuel.svg" alt="FUEL TYPE"> <span>FUEL TYPE &nbsp;</span><span> {{result.fuel_type}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col p-sm-2 ">
+                                            <div class="info-box">
+                                                <img src="assets/img/location.svg" alt="REG. STATE"><span> REG. STATE &nbsp;</span><span> {{result.registered_state}}</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  }
+                    
+                </div>
+                <!-- Pagination -->
+                <app-pagination [totalItems]="totalItems" [pageSize]="pageSize" (pageChange)="onPageChange($event)"></app-pagination>
+
+                <!-- <div class="row">
+                    <div class="col-md-12 mt-30 text-center">
+                        <ul class="pagination-wrap">
+                            <li><a href="#"><i class="ti-angle-left"></i></a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#" class="active">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="ti-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

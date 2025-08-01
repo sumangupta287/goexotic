@@ -1,0 +1,9 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    @for (bc of breadcrumbs; track bc.url) {
+      <li class="breadcrumb-item1">
+        <a [routerLink]="[bc.url]">{{ bc.label }}</a>
+      </li>
+    }
+  </ol>
+</nav>

@@ -1,0 +1,153 @@
+<!-- Header Banner -->
+@if(results.slug == 'about'){
+<section class="banner-header section-padding bg-img" data-overlay-dark="7" data-background="https://goexotic.co/assets/img/slider/3.jpg" style="background-image: url('https://goexotic.co/assets/img/3.png');">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div>
+                        <h6 class="mb-0">About GoExotic</h6>
+                        
+                        <h2>{{results?.name}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-container>
+    <div [innerHTML] =  "results?.content"></div>
+    
+</ng-container>
+}
+@else{ 
+<section class="banner-header section-padding bg-img" data-overlay-dark="7" data-background="https://goexotic.co/assets/img/slider/3.jpg"  style="background-image: url('https://goexotic.co/assets/img/slider/3.jpg');">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div>
+                        <h6 class="mb-0"></h6>
+                        <h2>{{results?.name}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@if(results.slug == 'insurance'){
+    <section>
+        <div class="insurance-form section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-8 col-sm-10 col-12">
+                        <div class="title-section text-center">
+                            <h5>Need Insurance For Your Vehicle ? </h5>
+                            <h3 class="m-0">Fill The Form Below or Call Us Now </h3>
+                        </div>
+                        <div class="title-section">
+                            @if(isSubmit == "false"){
+                                <h3 class="m-0">  Form Submitted successfully</h3>
+                            }
+                            @if(errors.length > 0){
+                                <div >
+                                <ul>
+                                    @for(error of errors; track error){
+                                        <li class="alert alert-success contact__msg"  role="alert">{{ error }}</li>
+                                    }
+                                  
+                                </ul>
+                              </div>
+                            }
+                        </div>
+                            <form class="sellyrcarfrm-grp"     [formGroup]="registrationForm" (ngSubmit)="submit()" >
+                            <div class="form-group">
+                                <label for="registrationNumber">Car Registration Number</label>
+                                <input type="text" class="form-control" id="registrationNumber" formControlName="registrationNumber">
+                            </div>
+
+
+                        <div class="form-group">
+                            <label for="make">Make</label>
+                            <input type="text" class="form-control" id="make" formControlName="make" >
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control"  id="model" formControlName="model">
+                        </div>
+                        <div class="form-group">
+                            <label for="insuranceCopy">Insurance Copy Upload</label>
+                            <div class="inputgrp fileinputgrp">
+                                <input type="file" id="insuranceCopy" (change)="onFileChange($event, 'insuranceCopy')" >
+                                <label for="insuranceCopy">
+                                    <img  src="assets/img/sellcar-placeholderimg.png"  alt="Insurance Copy">
+                                </label>
+                            </div>
+                            @if(filePreviews['insuranceCopy']){
+                            <div >
+
+                                <img [src]="filePreviews['insuranceCopy']" alt="Insurance Copy" width="100">
+                                <!-- <p>{{ files['insuranceCopy'].name }}</p> -->
+                              </div>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="rcFront">RC Front Upload</label>
+                            <div class="inputgrp fileinputgrp">
+                                <input type="file"  id="rcFront" (change)="onFileChange($event, 'rcFront')">
+                                <label for="rcFront">
+                                    <img  src="assets/img/sellcar-placeholderimg.png"  alt="RC Front Upload">
+                                </label>
+                            </div>
+                            @if(filePreviews['rcFront']){
+                            <div>
+                                <img [src]="filePreviews['rcFront']" alt="RC Front" width="100">
+                                <!-- <p>{{ files['rcFront'].name }}</p> -->
+                              </div>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="rcBack">RC Back Upload </label>
+                            <div class="inputgrp fileinputgrp">
+                                <input type="file" id="rcBack" (change)="onFileChange($event, 'rcBack')">
+                                <label for="rcBack">
+                                    <img  src="assets/img/sellcar-placeholderimg.png"  alt="RC Back Upload ">
+                                </label>
+                            </div>
+                            @if(filePreviews['rcBack']){
+                            <div >
+                                <img [src]="filePreviews['rcBack']" alt="RC Back" width="100">
+                                <!-- <p>{{ files['rcBack'].name }}</p> -->
+                              </div>
+                            }
+                        </div>
+
+                            <div class="text-center mb-4 mt-3">
+                                <button type="submit"
+                                    class="btn btn-dark-submit btn-dark  btn-block">Submit</button>
+                            </div>
+                            <div class="text-center">
+                                <h5>FOR ASSISTANCE, PLEASE CALL</h5>
+                                <h3>OUR INSURANCE MANAGER</h3>
+                                <span class="call-form"><a
+                                        href="tel:7890003535">789-000-3535</a></span>
+                            </div>
+                        </form>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    }
+    <ng-container>
+        <div [innerHTML] =  "results?.content"></div>
+        
+    </ng-container>
+           
+}
+
+                
+            
+
